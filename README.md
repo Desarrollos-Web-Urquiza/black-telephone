@@ -3,7 +3,7 @@ Black Telephone by DWU
 
 This is a Web App to register reports and manage them.
 
-"Black Telephone" is a fictitious call center that receives reports on the work of its employees.
+"Black Telephone" is a fictitious call center that receives reports about the work of its employees.
 
 ## How to use the Web App
 
