@@ -1,0 +1,150 @@
+.details-page {
+    
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+.paper-container {
+
+    padding: 1rem 22%;
+    width: fit-content;
+
+}
+
+.content {
+
+    padding: 1rem 0rem;
+
+}
+
+.h3{
+
+    color: red;
+    margin-left: 10px;
+
+}
+
+.h2{
+
+    margin-left: 10px;
+
+}
+
+.h1ofTable{
+
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+/*CELULAR*/
+@media(max-width: 900px)   {
+    @media(max-height: 379px){
+        .container {
+
+            max-height: 300px ; 
+
+        }
+
+    }
+}
+
+/*TABLET*/
+@media(min-width: 901px)   {
+    @media(max-height: 600px){
+        .container {
+
+            max-height: 500px ; 
+
+        }
+
+    }
+}
+
+.container {
+
+    margin-top: -50px;  
+
+}
+
+/*CELULAR*/
+@media(max-width: 625px)   {
+
+    .img404 {
+
+        width: 100% ;
+
+    }
+}
+
+.item-image {
+    
+    width: 100%;
+    height: 250px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+
+}
+
+.item-loader {
+
+    padding: 1rem;
+
+}
+
+.yesButton{
+
+   float: right;
+   margin-right:  30px ;
+   margin-top: 30px ;
+
+
+}
+
+.noButton{
+    float: right;
+    margin-top: 30px ;
+
+}
+
+.noButton2{
+    float: right;
+    margin-top: 10px ;
+
+}
+
+.deleteButton{
+
+    margin-top: 10px;
+    margin-right:  20px ;
+    float: right;
+
+}
+
+.editButton {
+
+    margin-top: 10px;
+    margin-right:  20px ;
+    float: right;
+
+}
+
+.editBox {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+
+
+}
+
+@media(max-width: 360px)   {
+    .backButton {
+
+      margin-top: 30px;
+
+    }
+}

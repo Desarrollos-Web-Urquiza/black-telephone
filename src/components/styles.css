@@ -1,0 +1,37 @@
+.results-page {
+    
+    padding: 3rem 1rem;
+
+}
+
+.card {
+    
+    width: 668px;
+
+}
+.cardSelect {
+    
+    width: 500px;
+    background-color: #f7fafc; 
+
+}
+
+.card-container {
+    
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+
+}
+
+.card-media {
+    
+    height: 140px;
+
+}
+
+.page-message {
+    
+    text-align: center;
+
+}
