@@ -1,0 +1,107 @@
+.slideImg {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+.carouselContainer {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.carouselProvider {
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.text {
+  padding: 0 15%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  color: white;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.paragraph, .title {
+  display: block;
+  flex-grow: 1;
+  text-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+}
+
+.slider {
+  width: 130vw;
+  border-radius: 90% 90% 0 0;
+  overflow: hidden;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrows {
+  position: absolute;
+  display: flex;
+  left: 0;
+  top: 10px;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  padding: 0 15px;
+  z-index: 2;
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border-width: 0;
+  font-size: 1.2rem;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: black;
+}
+
+.telephone{ 
+  
+  border-style: solid;
+  border-color: black;
+  background-color: black;
+  height:auto;
+  width:100%;
+  padding-top: 5%;
+  opacity: 0.7;
+  border-radius:50%;
+  
+
+ }
+
+ .telephoneTitle{ 
+  
+  border-style: solid;
+  border-color: black;
+  background-color: black;
+  height:auto;
+  width:100%;
+  padding-top: 10%;
+  opacity: 0.7;
+  border-radius:50%;
+  
+
+ }
+ 

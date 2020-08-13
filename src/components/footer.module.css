@@ -1,0 +1,46 @@
+.footer {
+  background-color: #161717;
+  color: white;
+  margin-top: 60px;
+}
+
+.subtitle {
+  color: #757779;
+}
+
+.footerBottom {
+  background-color: #4b4f52;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.container {
+  padding: 40px 0;
+}
+
+.link {
+  color: white;
+  line-height: 1.5;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  width: 35px;
+  height: 35px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background-color: #4b4f52;
+  color: white;
+}
+
+.socialLink:hover {
+  background-color: #367798;
+}

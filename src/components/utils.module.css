@@ -1,0 +1,7 @@
+.borderRadiusStandard {
+  border-radius: var(--border-radius-standard);
+}
+
+.borderRadiusLarge {
+  border-radius: var(--border-radius-large);
+}
