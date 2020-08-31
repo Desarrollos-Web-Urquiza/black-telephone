@@ -41,10 +41,10 @@ export default function SimpleCard(props) {
 
   console.log(props.properties.history.location.pathname)
 
-  //Es importante que la ruta sea "/eFnz319O" porque si no se complica mostrarlo completo con el botón. 
-  if(props.properties.history.location.pathname != "/eFnz319O"){
+  //Es importante que la ruta sea "/estadisticas" porque si no se complica mostrarlo completo con el botón. 
+  if(props.properties.history.location.pathname != "/estadisticas"){
   
-    props.properties.history.push("/eFnz319O")
+    props.properties.history.push("/estadisticas")
   
   }
   

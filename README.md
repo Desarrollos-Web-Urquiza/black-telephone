@@ -7,6 +7,6 @@ This is a Web App to register reports and manage them.
 
 ## How to use the Web App
 
-After download the code, open a console and write the route of the files executing the command "cd". Then run the command "npm start", and there you can see the index page.
+After download the code, open a console and write the route of the files executing the command "cd". Then run the command "npm start" (requires having "Node.js" installed in your PC), and there you can see the index page.
 
-Open the file "routes.js" in the "src" folder to find the link of the pages that will allow us to see and send the reports received.
+Go to the "Informes" section to see the reports and "Estadísticas" to see the statistics.

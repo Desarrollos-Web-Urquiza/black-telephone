@@ -1,26 +1,30 @@
 export default [
+  
+  // http://www.astervoip.com.ar/astervoip/soluciones-para-call-center/?gclid=EAIaIQobChMI-u_thpat6wIVjg2RCh344QTKEAAYASAAEgLnA_D_BwE
+
   {
-    image: 'icono-redes-y-tecnologia-electro3.svg',
-    title: 'Redes y tecnología',
-    desc: 'Somos la empresa líder en armado y mantenimiento de redes de seguridad de alta tecnología y fibra óptica',
+    image: 'icono1.svg',
+    title: 'Llamadas a larga distancia',
+    // desc: 'Somos la empresa líder en armado y mantenimiento de redes de seguridad de alta tecnología y fibra óptica',
+    desc: 'Cubrimos amplias zonas de nuestro país, lo que incluye varias provincias, haciendo telemarketing tanto a teléfonos fijos como a celulares',
     link: 'redes-y-tecnologia'
   },
   {
-    image: 'icono-compactacion-electro-3.svg',
-    title: 'Compactación y prensado',
-    desc: 'Creamos un sistema de eficiente para la compactación, recupero y reciclaje de chatarra tipo ferrosa',
+    image: 'icono2.png',
+    title: 'Estadísticas de trabajo',
+    desc: 'Llevamos un riguroso control del trabajo de nuestros empleados por medio de estadísticas, lo que garantiza la calidad de nuestros servicios',
     link: 'compactacion-y-reciclado'
   },
   {
-    image: 'icono-autopartes-electricas-electro-3.svg',
-    title: 'Autopartes eléctricas',
-    desc: 'Con 3 sucursales y un catálogo de mas de 200.000 productos, somos uno de los proveedores mas grandes de la provincia.',
+    image: 'icono3.svg',
+    title: 'Grabación',
+    desc: 'Registro de todas las llamadas para posibles posteriores análisis ante diversas quejas o reclamos de los consumidores ',
     link: 'autopartes'
   },
   {
-    image: 'icono-baterias-electro-3.svg',
-    title: 'Baterías',
-    desc: 'Somos importadores directos y representantes exclusivos de las marcas lideres del mercado en ventas por menor y mayor.',
+    image: 'icono4.svg',
+    title: 'Reclamos',
+    desc: 'Atendemos cualquier reclamo por parte de nuestros consumidores por cualquier problema relacionado con nuestros servicios',
     link: 'baterias'
   }
 ]

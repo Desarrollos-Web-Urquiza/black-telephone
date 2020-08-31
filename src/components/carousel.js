@@ -31,7 +31,7 @@ export default function Carousel(props)  {
   console.log(props) 
   const classes = useStyles()
   const mdScreen = useMediaQuery('(min-width:600px)');
-  const lgScreen = useMediaQuery('(min-width:1000px)');
+  const lgScreen = useMediaQuery('(min-width:1200px)');
   let heigth = lgScreen ? 30 : mdScreen ? 40 : 70
   if(props.carouselData.short) heigth = heigth / 2 + 5
   console.log(props.carouselData.short) 

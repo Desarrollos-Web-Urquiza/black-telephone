@@ -354,7 +354,7 @@ class SimpleTable extends React.Component{
           <meta charset="utf-8" />
           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-          <h2>Informes del mes de "{this.props.month}"</h2>
+          <h3>Informes del mes de "{this.props.month}"</h3>
           { this.state.spinner &&   <CircularProgress /> }
           { this.state.spinner &&   <Typography >Cargando mes...</Typography>}
         

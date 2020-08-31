@@ -4,6 +4,9 @@ import {Link} from 'react-router-dom';
 
 import MiComponente2 from './MiComponente2';
 import SimpleCard  from './card.js'
+import TopBar from './topBar'
+import Drawer from './drawer'
+import Footer from './footer';
 
 import Background from '../img/D70.jpg';
 import ExcelLogo from '../img/Excel.png';
@@ -32,10 +35,10 @@ const ColorButton = withStyles((theme) => ({
 const CardSelect = withStyles((theme) => ({
   root: {
 
-    backgroundColor: grey[100],
+    backgroundColor: grey[50],
 
     '&:hover': {
-      backgroundColor: grey[100],
+      backgroundColor: grey[50],
     },
   },
 }))(Card);
@@ -46,7 +49,7 @@ class MiComponente extends React.Component{
     	
     	super(props);
 	    
-	    this.state ={ mes: 'Junio 2020' }
+	    this.state ={ mes: 'Junio 2020', handleDrawerOpen: false }
 
 	    this.cambioMes = this.cambioMes.bind(this);
 	
@@ -91,6 +94,35 @@ class MiComponente extends React.Component{
 	    }
 	}	
 
+	
+	// handleDrawerOpen(openOrNo) {
+	
+
+	//     this.setState({handleDrawerOpen: openOrNo});
+	
+
+	// };
+
+		handleDrawerOpen (esto) {
+
+
+			// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
+			console.log(esto.state.handleDrawerOpen)
+
+			esto.setState({handleDrawerOpen: true})
+
+		}
+
+		handleDrawerClose (esto) {
+
+
+			// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
+			console.log(esto.state.handleDrawerOpen)
+
+			esto.setState({handleDrawerOpen: false})
+
+		}
+	
 	render() {
 
 		console.log(this.state.mes)
@@ -98,6 +130,15 @@ class MiComponente extends React.Component{
 		this.props.MONTH(this.state.mes)
 
 		console.log(this.props.reducidor)
+
+		// const handleDrawerOpen= () => {
+
+
+		// 	this.state.handleDrawerOpen = !this.state.handleDrawerOpen
+		// 	console.log(this.state.handleDrawerOpen)
+
+		// }
+
 		
 		return(
 			<div  
@@ -109,11 +150,27 @@ class MiComponente extends React.Component{
 
 		   //   }}
       		>
-				<h1 align="center" style={{marginLeft: 5}}>INFORMES DE TRABAJO DE EMPLEADOS DE "BLACK TELEPHONE"</h1>
+      			{console.log( this.state.handleDrawerOpen	 )}
+      			 <TopBar
+			        page={"home"} 
+
+			        onOpenDrawer={ () => this.handleDrawerOpen(this)}
+			        history={this.props.history}
+			      ></TopBar>
+			      
+			{console.log("estado " + this.state.handleDrawerOpen)}
+			       <Drawer
+
+			        onClose={() => this.handleDrawerClose(this)}
+			        open={this.state.handleDrawerOpen}
+			        history={this.props.history}
+			      ></Drawer>
+
+				<h2 align="center" style={{marginLeft: 5}} style={{marginTop: 90 }} > TRABAJO DE EMPLEADOS DE "BLACK TELEPHONE"</h2>
 				<div align="center" >
 					<div className="card-container">
 	               		<CardSelect className="cardSelect">
-							<h2 align="center">¿Qué mes desea ver?</h2>
+							<h3 align="center">¿Qué mes desea ver?</h3>
 		
 							<select value={this.state.mes} onChange={this.cambioMes} style={{height: 40, padding: 10}} >
 						
@@ -141,6 +198,11 @@ class MiComponente extends React.Component{
 				</div>
       			
 				<SimpleCard  properties={this.props} month={this.state.mes}/> 
+
+
+
+				<Footer properties={this.props}/>	
+
 				
 			</div>
 			

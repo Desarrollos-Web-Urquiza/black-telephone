@@ -12,15 +12,15 @@ export default [
   //   id: '1'
   // },
   {
-    name: 'Servicios',
-    link: '/servicios',
-    alt: 'Nuestros servicios',
+    name: 'Informar',
+    link: '/informar',
+    alt: 'Enviar informe de trabajo',
     id: '2'
   },
   {
-    name: 'Contacto',
-    link: '/contacto',
-    alt: 'Contactarse con Electro 3',
+    name: 'Estadísticas',
+    link: '/estadisticas',
+    alt: 'Ver estadísticas de nuestros trabajadores',
     id: '3'
   },
   // {

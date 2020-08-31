@@ -18,6 +18,9 @@ import linkError from './components/linkError'
 import edit from './components/edit'
 import Experimental from './components/experimental'
 
+//https://stackoverflow.com/questions/54511950/react-router-with-http-server
+//http-server --proxy http://localhost:8080? ./build
+
 const Routes = () => {
 
 	return (
@@ -30,8 +33,8 @@ const Routes = () => {
 
 					{<Route exact path='/' component={ Experimental } />}
 					<Route path='/informar' component={ Informar } />					
-					<Route  path='/eFnz319O' component={ MiComponente } /> {/*Para establecer un nuevo nombre para esta ruta, es necesario actualizar el componente "card.js" también*/}
-					<Route  path='/eFnz319O-ver/:mes' component={ MiComponente2 } />
+					<Route  path='/estadisticas' component={ MiComponente } /> {/*Para establecer un nuevo nombre para esta ruta, es necesario actualizar el componente "card.js" también*/}
+					<Route  path='/estadisticas-ver/:mes' component={ MiComponente2 } />
 					<Route path='/edit' component={ edit } />
 					<Route component={linkError} />	{/*<--  404 page - Con esta route, toda ruta que no esté definida se redirecciona al componente "linkError" */}				
 

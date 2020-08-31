@@ -24,7 +24,7 @@ class Footer extends React.Component{
 		
 	render() {
 
-		
+	
 		
 		return(
 			
@@ -72,9 +72,11 @@ class Footer extends React.Component{
               <br/>
             </Typography>
             <br/>
-            <Link href='/contacto'>
-              <a className={styles.link} alt='Ir a contacto'>Ir a contacto &rarr;</a>
-            </Link>
+
+             
+             { this.props.properties && <a className={styles.link}  onClick={() => this.props.properties.history.push("/informar" ) } alt='Ir a contacto'>Enviar informe de trabajo &rarr;</a>
+
+         		}
             <br/>
             <br/>
             <a href="https://www.instagram.com/blacktelephone/ " className={styles.socialLink} target="_blank">

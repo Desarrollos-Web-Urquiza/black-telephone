@@ -28,6 +28,10 @@ import MultilineTextFields from './MultilineTextFields';
 import MaterialInput from './materialInput';
 import SimpleSelect from './SimpleSelect';
 
+import TopBar from './topBar'
+import Drawer from './drawer'
+import Footer from './footer';
+
 import './styles.css';
 
 class Informar extends React.Component{
@@ -35,7 +39,7 @@ class Informar extends React.Component{
 	constructor(props) {
     	super(props);
 	     							   /* ↓  Modificar aca para cambiar el mes del informe */
-	    this.state ={ name: '', month: 'Junio 2020', ventas: '', llamadas: '', horas: '', ausentismo: '', reclamos: '', comentarios: '', err: false, err2: false, err3: false, success: false, spinner: false, disabled: false, err4: false, err5: false }
+	    this.state ={ name: '', month: 'Junio 2020', ventas: '', llamadas: '', horas: '', ausentismo: '', reclamos: '', comentarios: '', err: false, err2: false, err3: false, success: false, spinner: false, disabled: false, err4: false, err5: false, handleDrawerOpen: false  }
 
 	    // this.cambioMes = this.cambioMes.bind(this);	
 	}
@@ -325,6 +329,25 @@ class Informar extends React.Component{
    		}
 	}
 		
+		handleDrawerOpen (esto) {
+
+
+			// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
+			console.log(esto.state.handleDrawerOpen)
+
+			esto.setState({handleDrawerOpen: true})
+
+		}
+
+		handleDrawerClose (esto) {
+
+
+			// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
+			console.log(esto.state.handleDrawerOpen)
+
+			esto.setState({handleDrawerOpen: false})
+
+		}
 	render() {
 
 		console.log("name " + this.state.name)
@@ -343,8 +366,25 @@ class Informar extends React.Component{
 			<div>		
 
 				<CssBaseline />
+
+				<TopBar
+			        page={"home"} 
+
+			        onOpenDrawer={ () => this.handleDrawerOpen(this)}
+			        history={this.props.history}
+			      ></TopBar>
+			      
+			       <Drawer
+
+			        onClose={() => this.handleDrawerClose(this)}
+			        open={this.state.handleDrawerOpen}
+			        history={this.props.history}
+			      ></Drawer>
+	            <br />
 	            
-	            <h1 align="center">ESCRIBA SU INFORME DE TRABAJO</h1>
+	            
+	            
+	            <h1 align="center" style={{marginTop: 75 }}>ESCRIBA SU INFORME DE TRABAJO</h1>
 	           
 	            <br />
 	            <br />
@@ -494,7 +534,7 @@ class Informar extends React.Component{
 	                </CardContent>
 	                </Card>
 	            </div>				
-
+	            <Footer />
 			</div>
 
 		)
