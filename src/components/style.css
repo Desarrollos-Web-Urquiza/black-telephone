@@ -141,6 +141,54 @@
 
 }
 
+.numberBox{
+
+    /*float: right;*/
+   /* margin-right:  -10px ;
+    margin-top: -120px ;*/
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: flex-end;*/
+    justify-content: center
+ 
+ 
+ 
+ }
+ 
+ .pencil{
+ 
+    /*float: right;*/
+    margin-right:  -10px ;
+    margin-top: -25px ;
+  
+    justify-content: flex-end;
+ 
+ 
+ 
+ }
+ 
+.downloadExcel{
+
+    margin-top: 33px;
+    margin-right: 10px; 
+     float: right;
+    cursor: pointer;
+
+}
+
+
+.pencilName{
+
+    /*float: right;*/
+    margin-right:  -10px ;
+    margin-top: 25px ;
+  
+    justify-content: flex-end;
+ 
+ 
+ 
+ }
+
 @media(max-width: 360px)   {
     .backButton {
 

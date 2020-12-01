@@ -17,6 +17,8 @@ import Informar from './components/informar'
 import linkError from './components/linkError'
 import edit from './components/edit'
 import Experimental from './components/experimental'
+import uploadInput from './components/excel-to-json/uploadInput'
+import showNumber from './components/excel-to-json/showNumber'
 
 //https://stackoverflow.com/questions/54511950/react-router-with-http-server
 //http-server --proxy http://localhost:8080? ./build
@@ -36,6 +38,8 @@ const Routes = () => {
 					<Route  path='/estadisticas' component={ MiComponente } /> {/*Para establecer un nuevo nombre para esta ruta, es necesario actualizar el componente "card.js" también*/}
 					<Route  path='/estadisticas-ver/:mes' component={ MiComponente2 } />
 					<Route path='/edit' component={ edit } />
+					<Route path='/uploadexcel' component={ uploadInput } />
+					<Route path='/mostrarnumero/:params' component={ showNumber } />
 					<Route component={linkError} />	{/*<--  404 page - Con esta route, toda ruta que no esté definida se redirecciona al componente "linkError" */}				
 
 				</Switch>

@@ -5,12 +5,12 @@ export default [
     alt: 'Ir al inicio',
     id: '0'
   },
-  // {
-  //   name: 'Quiénes somos',
-  //   link: '/nosotros',
-  //   alt: 'Sobre nosotros',
-  //   id: '1'
-  // },
+  {
+    name: 'Llamadas',
+    link: '/uploadexcel',
+    alt: 'Sobre nosotros',
+    id: '1'
+  },
   {
     name: 'Informar',
     link: '/informar',
