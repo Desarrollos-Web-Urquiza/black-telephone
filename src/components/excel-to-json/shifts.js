@@ -18,8 +18,6 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 import TextField from '@material-ui/core/TextField';
 import Draggable  from './draggable'
   
-
-
 const useStyles = makeStyles((theme) => ({
   modal: {
     display: 'flex',
@@ -76,7 +74,6 @@ const useStyle = makeStyles((theme) => ({
 
 function Shifts(props) {
   
-
   const classes = useStyles();
   const classe = useStyle();
 
@@ -85,16 +82,12 @@ function Shifts(props) {
   const [currentData, setCurrentData] = React.useState('');
   const dispatch = useDispatch()
 
-
   useEffect(() => {
   
-   
     setCurrentData(props.reducidor)
     console.log(props.reducidor)
    
-
   });
-
 
   //Si el mes no tiene informes, no mostramos el botón de "Eliminar mes completo"   
   if(props.idContent == "-" ){
@@ -109,8 +102,6 @@ function Shifts(props) {
 
   console.log(props)
   console.log("props")
-
- 
 
   const handleOpen = () => {
   
@@ -131,9 +122,6 @@ function Shifts(props) {
     // setCurrentData(event.target.value);
 
     // console.log(currentData);
-    
-   
-
 
   }
 
@@ -142,16 +130,15 @@ function Shifts(props) {
     <div className="deleteButton">
     {/*FONT AWESOME TRASH https://fontawesome.com/icons/trash-alt?style=solid*/}
     
-     <div className={classe.root} onClick={handleOpen} >
+      <div className={classe.root} onClick={handleOpen} >
      
         <Fab variant="extended">
           <NavigationIcon className={classe.extendedIcon} />
           Turnos
         </Fab>
       
-       </div>
+      </div>
    
-    
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -167,11 +154,7 @@ function Shifts(props) {
         <Fade in={open}>
           <div className={classes.paper}>
 
-
-                    
             <Draggable   />
-
-
 
             <div  className="noButton">
            
@@ -179,15 +162,12 @@ function Shifts(props) {
                 Guardar
               </Button>
 
-            </div>
-              
+            </div> 
 
-         
           </div>
         </Fade>
       </Modal>
     </div>
-
 
   );
 }
@@ -206,6 +186,5 @@ const mapDispatchToProps = {
   MONTH,
   
 }
-
 
 export default   connect(mapStateToProps, mapDispatchToProps)(Shifts)

@@ -9,7 +9,6 @@ import store from './redux/store.js';
 import './components/style.css'
 import './components/global.css'	
 import 'pure-react-carousel/dist/react-carousel.es.css';
-	
 
 import MiComponente from './components/MiComponente'
 import MiComponente2 from './components/MiComponente2'
@@ -18,6 +17,7 @@ import linkError from './components/linkError'
 import edit from './components/edit'
 import Experimental from './components/experimental'
 import uploadInput from './components/excel-to-json/uploadInput'
+import Help from './components/excel-to-json/help'
 import showNumber from './components/excel-to-json/showNumber'
 
 //https://stackoverflow.com/questions/54511950/react-router-with-http-server
@@ -40,6 +40,7 @@ const Routes = () => {
 					<Route path='/edit' component={ edit } />
 					<Route path='/uploadexcel' component={ uploadInput } />
 					<Route path='/mostrarnumero/:params' component={ showNumber } />
+					<Route path='/uploadexcel-ayuda' component={ Help } />
 					<Route component={linkError} />	{/*<--  404 page - Con esta route, toda ruta que no esté definida se redirecciona al componente "linkError" */}				
 
 				</Switch>

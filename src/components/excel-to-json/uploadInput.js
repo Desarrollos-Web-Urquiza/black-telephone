@@ -196,13 +196,14 @@ const handleOnChange = event => {
     console.log(showTerritory.value)
     console.log(show.value)
     console.log(urlImage)
+    console.log(props.history)
 
 		return(
 		
 			<div>
     	 <Helmet>
                                 
-          <title>Informes - Territorios de predicación</title>
+          <title>Informes - Territorios de llamadas</title>
                 
         </Helmet>
 
@@ -241,8 +242,19 @@ const handleOnChange = event => {
             { spinner &&   <Typography >Cargando territorio...</Typography>}
 
           <br />
+          <a 
+            // name={link.name}
+            // alt={link.alt}
+            // className={styles.link}
+            onClick={() => props.history.push('/uploadexcel-ayuda' ) }
+            style={{marginLeft: 400,   cursor: "pointer", color: "#0070f3",  }}
+          >
+            Ayuda
+         
+          </a>
           <br />
           <br />
+         
   				{/*</form>*/}
           </CardSelect>
         </div>

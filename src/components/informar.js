@@ -151,14 +151,14 @@ class Informar extends React.Component{
 
 		let informe = { 
 
-			name:   name,
-			month:  month,
-			ventas: ventas,
-			llamadas: llamadas,
-			horas: horas,
-			ausentismo: ausentismo,
-			reclamos: reclamos, 
-			comentarios: comentarios
+			name,
+			month,
+			ventas,
+			llamadas,
+			horas,
+			ausentismo,
+			reclamos, 
+			comentarios
 
 		}
 
@@ -380,9 +380,7 @@ class Informar extends React.Component{
 			        open={this.state.handleDrawerOpen}
 			        history={this.props.history}
 			      ></Drawer>
-	            <br />
-	            
-	            
+	            <br />           
 	            
 	            <h1 align="center" style={{marginTop: 75 }}>ESCRIBA SU INFORME DE TRABAJO</h1>
 	           

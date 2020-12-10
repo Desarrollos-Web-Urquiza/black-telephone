@@ -11,13 +11,10 @@ import TextField from "@material-ui/core/TextField";
 
 import Iframe from 'react-iframe'
 
-
 import clipUsado from '../../img/clip-usado1.png';
 
 import { green, purple, grey } from '@material-ui/core/colors';
 import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
-
-
 
 // import './style.css';
 //Los estilos los puse en Routes.js
@@ -39,19 +36,13 @@ const CardSelectTerritory = withStyles((theme) => ({
     backgroundColor: '#d8ae74',
     width: 275,
 
-
-
     '&:hover': {
       backgroundColor: '#d8ae74',
     },
   },
 }))(Card);
 
-
-
-
 const ShowNumber = props => {
-	
 	
   const [Territorio, setTerritorio] = React.useState({value: 'Territorio "?" '});
   const [Nombre, setNombre] = React.useState({value: ''});
@@ -65,230 +56,229 @@ const ShowNumber = props => {
   const [visibiltyInputDireccion, setVisibiltyInputDireccion] = React.useState(false);
   const [visibiltyInputTelefono, setVisibiltyInputTelefono] = React.useState(false);
  	
+  //Recibimos todos los argumentos del número que clickeamos desde la URL
 
-    //Recibimos todos los argumentos del número que clickeamos desde la URL
+  console.log("ShowNumber actualizado: 20")
 
-		console.log("ShowNumber actualizado: 20")
-    
-    let semiParams = window.location.pathname.split('/')//Separamos el mes del resto de la URL
-      
-     semiParams =  semiParams[2]
-
-     let params = semiParams.split('&')
-
-     let territory = params[0].split('=')
-
-     territory = territory[0] + " " + territory[1]
-
-     console.log(territory)
-     Territorio.value = territory
-    
-     let name = params[1].split('=')
-     
-     name = name[1].split('%20')
-
-     let completeName = ""
-
-     for (var i = 0  ; i < name.length; i++) {
-     
-      completeName = completeName + name[i] + " "
-     
-     }
-
-     //Corregimos las "Ñ" que vienen mal de las URLs
-     completeName = completeName.replace("%C3%91", "Ñ")
-
-     console.log(completeName)
-
-     //Ponemos en el estado los datos de la URL solo si en el estado por defecto está vacío. Si no quedará el estado que modificamos con el "pencil"
-     //Hacemos lo mismo con la "Direccion" y el "Telefono"
-     if (Nombre.value == '') {
-
-      Nombre.value = completeName
-
-     }
-
-     let direction = params[2].split('=')
-
-     direction =  direction[1].split('%20')
-
-
-      let completeDirection = ""
-
-      for (var i = 0  ; i < direction.length; i++) {
-     
-      completeDirection = completeDirection + direction[i] + " "
-     
-     }
-
-     if (Direccion.value == '') {
+  let semiParams = window.location.pathname.split('/')//Separamos el mes del resto de la URL
   
-       Direccion.value = completeDirection
+  semiParams =  semiParams[2]
 
-     }
+  let params = semiParams.split('&')
 
+  let territory = params[0].split('=')
 
-     console.log(completeDirection)
+  territory = territory[0] + " " + territory[1]
 
-     let telephone = params[3].split('=')
+  console.log(territory)
+  Territorio.value = territory
 
-     telephone =  telephone[1].split('%20')
+  let name = params[1].split('=')
+  
+  name = name[1].split('%20')
 
-     let completeTelephone = ""
+  let completeName = ""
 
-     for (var i = 0  ; i < telephone.length; i++) {
-     
-      completeTelephone = completeTelephone + telephone[i] + " "
-     
-     }
+  for (var i = 0  ; i < name.length; i++) {
+  
+    completeName = completeName + name[i] + " "
+  
+  }
 
+  //Corregimos las "Ñ" que vienen mal de las URLs
+  completeName = completeName.replace("%C3%91", "Ñ")
 
-     console.log(completeTelephone)
+  console.log(completeName)
 
+  //Ponemos en el estado los datos de la URL solo si en el estado por defecto está vacío. Si no quedará el estado que modificamos con el "pencil"
+  //Hacemos lo mismo con la "Direccion" y el "Telefono"
+  if (Nombre.value == '') {
 
-     if (Telefono.value == '') {
+  Nombre.value = completeName
 
-       Telefono.value = completeTelephone
+  }
 
-     }
+  let direction = params[2].split('=')
 
-     console.log(Territorio)
-
-      let showTerritorys = params[4].split('=')
-
-     // showTerritorys =  showTerritorys[1].split('%20')
-
-     // let completeTelephone = ""
-     console.log(showTerritorys)
-
-     if( showTerritorys[1] == "true"  && Territorio.value != "Territorio desconocido"  ){   
-
-      showTerritory.value = true
+  direction =  direction[1].split('%20')
 
 
-     } else {
+  let completeDirection = ""
 
-      showTerritory.value = false
+  for (var i = 0  ; i < direction.length; i++) {
+  
+  completeDirection = completeDirection + direction[i] + " "
+  
+  }
 
-     }
+  if (Direccion.value == '') {
 
-     //  console.log(document.getElementById("outlined-multiline-static-nro"))
-     //  console.log(visibiltyInputTelefono)
-     // if ( document.getElementById("outlined-multiline-static-nro") != null) {
+    Direccion.value = completeDirection
 
-
-     //  document.getElementById("outlined-multiline-static-nro").focus()
-     //  console.log(document.getElementById("outlined-multiline-static-nro"))
-
-     // }
-
-      console.log( showTerritory.value)
-
-     console.log(semiParams)
-      
-    const hiddenShowMap =  () => {
-
-      setShowMap({value: !showMap.value})
-      // showMap.value =  !showMap.value
-      console.log(showMap.value)
+  }
 
 
-    }
+  console.log(completeDirection)
 
-    const mouseOver =  () => {
+  let telephone = params[3].split('=')
 
-      
-      setVisibiltyMouseHover(true)
-      // setInterval(function() { setVisibiltyMouseHover(false) }, 10000);
-      // console.log("Hola mundo 👋")
+  telephone =  telephone[1].split('%20')
 
+  let completeTelephone = ""
 
-    }
-
-    const noMouseOver =  () => {
-
-
-
-      
-
-      // setInterval(function() { setVisibiltyMouseHover(false) }, 5000);
-      // setInterval(function() {  console.log("Hello world 👋") }, 5000);
-      
-
-      setVisibiltyMouseHover(false) 
-      console.log("Hello world 👋")
-      
-      
+  for (var i = 0  ; i < telephone.length; i++) {
+  
+  completeTelephone = completeTelephone + telephone[i] + " "
+  
+  }
 
 
-    }
+  console.log(completeTelephone)
 
-    //Al perder el foco, actualizamos el estado y volvemos invisible el input para pasar a mostrar el texto correspondiente
-   const _onBlurFunctionName =  event => {
 
-        console.log(event.target.value )
-       
-        setNombre({value: event.target.value })
+  if (Telefono.value == '') {
 
-        console.log(Nombre.value )
-        setVisibiltyInputName(false)
+    Telefono.value = completeTelephone
 
-    }
+  }
+
+  console.log(Territorio)
+
+  let showTerritorys = params[4].split('=')
+
+  // showTerritorys =  showTerritorys[1].split('%20')
+
+  // let completeTelephone = ""
+  console.log(showTerritorys)
+
+  if( showTerritorys[1] == "true"  && Territorio.value != "Territorio desconocido"  ){   
+
+  showTerritory.value = true
+
+
+  } else {
+
+  showTerritory.value = false
+
+  }
+
+  //  console.log(document.getElementById("outlined-multiline-static-nro"))
+  //  console.log(visibiltyInputTelefono)
+  // if ( document.getElementById("outlined-multiline-static-nro") != null) {
+
+
+  //  document.getElementById("outlined-multiline-static-nro").focus()
+  //  console.log(document.getElementById("outlined-multiline-static-nro"))
+
+  // }
+
+  console.log( showTerritory.value)
+
+  console.log(semiParams)
     
-    const _onBlurFunctionTelefono =  event => {
+  const hiddenShowMap =  () => {
 
-            console.log(event.target.value )
-           
-            Telefono.value = event.target.value 
-            setTelefono({value: event.target.value })
-            console.log(setTelefono )
-
-            console.log(Telefono )
-            setVisibiltyInputTelefono(false)
+    setShowMap({value: !showMap.value})
+    // showMap.value =  !showMap.value
+    console.log(showMap.value)
 
 
-    }
+  }
+
+  const mouseOver =  () => {
+
     
-    const _onBlurFunctionDireccion =  event => {
+    setVisibiltyMouseHover(true)
+    // setInterval(function() { setVisibiltyMouseHover(false) }, 10000);
+    // console.log("Hola mundo 👋")
 
-            console.log(event.target.value )
-           
-            setDireccion({value: event.target.value })
 
-            console.log(Direccion.value )
-            setVisibiltyInputDireccion(false)
+  }
 
-    }
+  const noMouseOver =  () => {
 
-    const pencilOfName =  () => {
 
-        setVisibiltyInputName(true)
 
-    }
     
-    const pencilOfDireccion =  () => {
 
-        setVisibiltyInputDireccion(true)
-
-    }
+    // setInterval(function() { setVisibiltyMouseHover(false) }, 5000);
+    // setInterval(function() {  console.log("Hello world 👋") }, 5000);
     
-    const pencilOfTelefono =  () => {
 
-        setVisibiltyInputTelefono(true)
-        // document.getElementById("outlined-multiline-static-nro").focus()
-
-        // console.log( document.getElementById("outlined-multiline-static-nro"))
-        // if ( document.getElementById("outlined-multiline-static-nro") != null) {
+    setVisibiltyMouseHover(false) 
+    console.log("Hello world 👋")
+    
+    
 
 
-        //   document.getElementById("outlined-multiline-static-nro").focus()
-        //   console.log(document.getElementById("outlined-multiline-static-nro"))
+  }
 
-        //  }
+  //Al perder el foco, actualizamos el estado y volvemos invisible el input para pasar a mostrar el texto correspondiente
+  const _onBlurFunctionName =  event => {
 
-    }
+      console.log(event.target.value )
+      
+      setNombre({value: event.target.value })
 
-      console.log(showMap.value)
+      console.log(Nombre.value )
+      setVisibiltyInputName(false)
+
+  }
+  
+  const _onBlurFunctionTelefono =  event => {
+
+          console.log(event.target.value )
+          
+          Telefono.value = event.target.value 
+          setTelefono({value: event.target.value })
+          console.log(setTelefono )
+
+          console.log(Telefono )
+          setVisibiltyInputTelefono(false)
+
+
+  }
+  
+  const _onBlurFunctionDireccion =  event => {
+
+          console.log(event.target.value )
+          
+          setDireccion({value: event.target.value })
+
+          console.log(Direccion.value )
+          setVisibiltyInputDireccion(false)
+
+  }
+
+  const pencilOfName =  () => {
+
+      setVisibiltyInputName(true)
+
+  }
+  
+  const pencilOfDireccion =  () => {
+
+      setVisibiltyInputDireccion(true)
+
+  }
+  
+  const pencilOfTelefono =  () => {
+
+      setVisibiltyInputTelefono(true)
+      // document.getElementById("outlined-multiline-static-nro").focus()
+
+      // console.log( document.getElementById("outlined-multiline-static-nro"))
+      // if ( document.getElementById("outlined-multiline-static-nro") != null) {
+
+
+      //   document.getElementById("outlined-multiline-static-nro").focus()
+      //   console.log(document.getElementById("outlined-multiline-static-nro"))
+
+      //  }
+
+  }
+
+    console.log(showMap.value)
 
 {/*<div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=rosario%20santa%20fe&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.whatismyip-address.com/nordvpn-coupon/">nordvpn discount codes</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>     */}
 
