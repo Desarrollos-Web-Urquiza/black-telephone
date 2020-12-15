@@ -23,11 +23,5 @@ export default [
     alt: 'Ver estadísticas de nuestros trabajadores',
     id: '3'
   },
-  // {
-  //   name: 'Trabajá con nosotros',
-  //   link: '/trabaja-con-nosotros',
-  //   alt: 'Trabajá con nosotros',
-  //   id: '4'
-  // }
-
+    
 ]

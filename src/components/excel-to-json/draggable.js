@@ -5,11 +5,10 @@ import uuid from "uuid/v4";
 
 import  MONTH  from '../../redux/actions/month';
 
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles} from '@material-ui/core/styles';
-import { green, purple, grey, red } from '@material-ui/core/colors';
+import {  purple, red } from '@material-ui/core/colors';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
@@ -23,7 +22,6 @@ const TrashButton = withStyles((theme) => ({
     backgroundColor: red[500],
     minWidth: 40,
     fontSize: 20,
-
   
     '&:hover': {
       backgroundColor: red[700],
@@ -31,21 +29,21 @@ const TrashButton = withStyles((theme) => ({
   },
 }))(Button);
 
-let itemsFromBackend = [
-  
-];
+let itemsFromBackend = []
 
-  let columnsFromBackend = {
+let columnsFromBackend = {
+  
   [uuid()]: {
     name: "Turnos",
     items: itemsFromBackend
   },
-  
+
 };
 
 const onDragEnd = (result, columns, setColumns) => {
  
   if (!result.destination) return;
+  
   const { source, destination } = result;
 
   console.log(result)
@@ -53,6 +51,7 @@ const onDragEnd = (result, columns, setColumns) => {
   console.log(setColumns)
 
   if (source.droppableId !== destination.droppableId) {
+    
     const sourceColumn = columns[source.droppableId];
     const destColumn = columns[destination.droppableId];
     const sourceItems = [...sourceColumn.items];
@@ -95,10 +94,15 @@ const onDragEnd = (result, columns, setColumns) => {
     
     console.log(columns)
     console.log(Object.entries(columns)[0][1].items)
+    
     Object.entries(columns)[0][1].items= copiedItems
+    
     console.log(Object.entries(columns)[0][1].items)
+    
     itemsFromBackend = copiedItems
+    
     Object.entries(columnsFromBackend)[0][1].items= copiedItems
+    
     console.log(itemsFromBackend)
     console.log("No entra a IF onDragEnd ")
   }
@@ -119,6 +123,7 @@ const onDragEnd = (result, columns, setColumns) => {
       console.log(event.target)
       console.log(setOnBlur)
       console.log(setReset)
+      
       setOnBlur(event.target.value)
       setReset(event.target)
 
@@ -129,8 +134,10 @@ const onDragEnd = (result, columns, setColumns) => {
   const _handleSubmit = event  => {
 
     console.log(event)
+   
     //Evitar que se recargue la página al hacer submit
     event.preventDefault()
+   
     let valor = document.getElementById("outlined").value
 
     if(valor != ""){
@@ -265,16 +272,17 @@ const onDragEnd = (result, columns, setColumns) => {
 
     if(typeof(Object.entries(columns)[0][1].items[index].calls) == "undefined" ) {
 
-
       Object.entries(columns)[0][1].items[index].originalName = Object.entries(columns)[0][1].items[index].content
       Object.entries(columns)[0][1].items[index].content =   Object.entries(columns)[0][1].items[index].content +  " 📞"
       Object.entries(columns)[0][1].items[index].calls = 1
+      
       console.log("calls is undefined")
 
     } else{
 
       Object.entries(columns)[0][1].items[index].content =   Object.entries(columns)[0][1].items[index].content +  " 📞"
       Object.entries(columns)[0][1].items[index].calls = Object.entries(columns)[0][1].items[index].calls + 1
+      
       console.log("calls is defined")
 
     }
@@ -353,159 +361,162 @@ const onDragEnd = (result, columns, setColumns) => {
 
   return (
     <div style={{ display: "flexDirectionex", justifyContent: "center", height: "100%",  }}>
+     
       <DragDropContext
         onDragEnd={result => onDragEnd(result, columns, setColumns,)}
                 
       >
       
       {Object.entries(columns).map(([columnId, column], index) => {
-      
-      return (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+        
+        return (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
 
-          }}
-          key={columnId}
-        >
-          <h2>{column.name}</h2>
-          <div style={{ margin: 8 }}>
-            <Droppable droppableId={columnId} key={columnId}>
-            {(provided, snapshot) => {
-              return (
-                <div
-                  {...provided.droppableProps}
-                  ref={provided.innerRef}
-                  style={{
-                    background: snapshot.isDraggingOver
-                      ? "lightgrey"//Colores de fondo
-                      : "lightgrey",
-                    padding: 4,
-                    width: 250,
-                    height: 350,
-                    overflow: "auto",                  
-
-                  }}
-                >
-                  {column.items.map((item, index) => {
-                    return (
-                      <Draggable
-                        key={item.id}
-                        draggableId={item.id}
-                        index={index}
-                      >
-                        {(provided, snapshot) => {
-                          return (
-                            <div>
-                              <div
-                                ref={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                                
-                                style={{
-                                  userSelect: "none",
-                                  padding: 16,
-                                  margin: "0 0 8px 0",
-                                  height: "45px",
-                                  width: "70%",
-
-                                  backgroundColor: snapshot.isDragging
-                                    ? "#263B4A"
-                                    : "#456C86",
-                                  color: "white",
-                                  display: "flex",
-                                  flexWrap: "wrap",                                    
-                                  
-                                  ...provided.draggableProps.style
-                                }}
-                              >
-              
-                              <div style={{ flex: "100%" }} > {item.content} </div>
-
-                              {console.log(item)}
-          
-                              <div  style={{ flex: "auto" , flexWrap: "nowrap", alignSelf: "space-around"}}>                               
-                                
-                                  <Grid item>
-                                    <Tooltip title="Añadir llamada" onClick={() => addCall(item)} >
-                                      <IconButton aria-label="delete">
-                                        <AddIcon />
-                                        </IconButton>
-                                    </Tooltip>
-                                  </Grid>
-                            
-                                </div> 
-                              
-                                <div  style={{ flex: "auto" , flexWrap: "nowrap", alignSelf: "space-around"}}>                               
-                                
-                                  <Grid item>
-                                    <Tooltip title="Quitar llamada" onClick={() => decreaseCall(item)}  >
-                                      <IconButton aria-label="delete" >
-                                        <RemoveIcon />
-                                        </IconButton>
-                                    </Tooltip>
-                                  </Grid>
-                            
-                                </div> 
-
-                                <div  style={{ flex: "auto" , flexWrap: "nowrap", alignSelf: "space-around"}}>                               
-                              
-                                  <Grid item>
-                                    <Tooltip title="Borrar"  onClick={() => deleteOfArray(item)}>
-                                      <IconButton aria-label="delete">
-                                        <DeleteIcon />
-                                        </IconButton>
-                                    </Tooltip>
-                                  </Grid>
-                          
-                                </div> 
-
-                              </div>
-                            
-                            </div>
-                          );
-                        }}
-                      </Draggable>
-                    );
-                  })}
-                  {provided.placeholder}
-                </div>
-              );
             }}
-            </Droppable>
-          </div>
+            key={columnId}
+          >
+            <h2>{column.name}</h2>
+            <div style={{ margin: 8 }}>
+              <Droppable droppableId={columnId} key={columnId}>
+              {(provided, snapshot) => {
+                return (
+                  <div
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    style={{
+                      background: snapshot.isDraggingOver
+                        ? "lightgrey"//Colores de fondo
+                        : "lightgrey",
+                      padding: 4,
+                      width: 250,
+                      height: 350,
+                      overflow: "auto",                  
 
-        </div>
-      );
-        })}
+                    }}
+                  >
+                    {column.items.map((item, index) => {
+                      return (
+                        <Draggable
+                          key={item.id}
+                          draggableId={item.id}
+                          index={index}
+                        >
+                          {(provided, snapshot) => {
+                            return (
+                              <div>
+                                <div
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
+                                  
+                                  style={{
+                                    userSelect: "none",
+                                    padding: 16,
+                                    margin: "0 0 8px 0",
+                                    height: "45px",
+                                    width: "70%",
+
+                                    backgroundColor: snapshot.isDragging
+                                      ? "#263B4A"
+                                      : "#456C86",
+                                    color: "white",
+                                    display: "flex",
+                                    flexWrap: "wrap",                                    
+                                    
+                                    ...provided.draggableProps.style
+                                  }}
+                                >
+                  
+                                  <div style={{ flex: "100%" }} > {item.content} </div>
+
+                                  {console.log(item)}
+              
+                                  <div  style={{ flex: "auto" , flexWrap: "nowrap", alignSelf: "space-around"}}>                               
+                                    
+                                      <Grid item>
+                                        <Tooltip title="Añadir llamada" onClick={() => addCall(item)} >
+                                          <IconButton aria-label="delete">
+                                            <AddIcon />
+                                            </IconButton>
+                                        </Tooltip>
+                                      </Grid>
+                                
+                                  </div> 
+                                  
+                                  <div  style={{ flex: "auto" , flexWrap: "nowrap", alignSelf: "space-around"}}>                               
+                                  
+                                    <Grid item>
+                                      <Tooltip title="Quitar llamada" onClick={() => decreaseCall(item)}  >
+                                        <IconButton aria-label="delete" >
+                                          <RemoveIcon />
+                                          </IconButton>
+                                      </Tooltip>
+                                    </Grid>
+                              
+                                  </div> 
+
+                                  <div  style={{ flex: "auto" , flexWrap: "nowrap", alignSelf: "space-around"}}>                               
+                                
+                                    <Grid item>
+                                      <Tooltip title="Borrar"  onClick={() => deleteOfArray(item)}>
+                                        <IconButton aria-label="delete">
+                                          <DeleteIcon />
+                                          </IconButton>
+                                      </Tooltip>
+                                    </Grid>
+                            
+                                  </div> 
+
+                                </div>
+                              
+                              </div>
+                            );
+                          }}
+                        </Draggable>
+                      );
+                    })}
+                  {provided.placeholder}
+                  </div>
+                );
+              }}
+              </Droppable>
+            </div>
+
+          </div>
+        );
+      })}
       </DragDropContext>
+      
       <br />
+      
       <div align="center">
       
-      <form  autocomplete="off" onSubmit={_handleSubmit}>
+        <form  autocomplete="off" onSubmit={_handleSubmit}>
 
-      <TextField
+          <TextField
 
-        id="outlined"
-        styles={{marginLeft:  100}}    
+            id="outlined"
+            styles={{marginLeft:  100}}    
+            variant="outlined"
+            onBlur={_onBlurFunction}   
 
-        variant="outlined"
-        onBlur={_onBlurFunction}
+          />
 
-        // defaultValue={props.currentData}         
-
-      />
-      <br />
-      <br />
-    <Button  variant="contained" color="primary" onClick = { () => _onClick() }> 
+          <br />
+          <br />
           
-      Asginar turno
-            
-    </Button>
-     </form>
-    </div>
+          <Button  variant="contained" color="primary" onClick = { () => _onClick() }> 
+              
+            Asginar turno
+                
+          </Button>
+      
+        </form>
+      </div>
     </div>
   );
 }

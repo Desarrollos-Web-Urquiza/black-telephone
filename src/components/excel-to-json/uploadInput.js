@@ -35,18 +35,15 @@ import clipUsado from '../../img/clip-usado2.png';
 
 import XLSX  from 'xlsx'; // Tutorial para convertir Excel en JSON https://www.youtube.com/watch?v=IcxJUJXRPGw
 
-
-
 // // import './style.css';
 // //Los estilos los puse en Routes.js
-
 
 const CardSelect = withStyles((theme) => ({
   root: {
 
     backgroundColor: grey[100],
-    width: 500,
 
+    width: 500,
 
     '&:hover': {
       backgroundColor: grey[100],
@@ -58,8 +55,8 @@ const CardSelectTerritory = withStyles((theme) => ({
   root: {
 
     backgroundColor: '#d8ae74',
+   
     width: 675,
-
 
     '&:hover': {
       backgroundColor: '#d8ae74',
@@ -69,12 +66,12 @@ const CardSelectTerritory = withStyles((theme) => ({
 
 const UploadInput = props => {
 
-	
 	window.onbeforeunload = function(e) {
     return 'Texto de aviso';
   };
 
   const [rows, setRows] = React.useState({value: []});
+  
   const [show, setShow] = React.useState({value: false});
  
   const [noHouse, setNoHouse] = React.useState({value: [  ]});
@@ -87,48 +84,50 @@ const UploadInput = props => {
 
   const [handleDrawerOpen, setHandleDrawerOpen] = React.useState(false);
 
-     const noCasa = (param) => {
+  const noCasa = (param) => {
 
-          if (noHouse.value != undefined) {
+      if (noHouse.value != undefined) {
 
-            console.log(param)
-            console.log(noHouse.value)
-            console.log(noHouse)
-            console.log(typeof(noHouse.value))
-            console.log(typeof(noHouse))
-           
-            let date =  Date()
+        console.log(param)
+        console.log(noHouse.value)
+        console.log(noHouse)
+        console.log(typeof(noHouse.value))
+        console.log(typeof(noHouse))
+        
+        let date =  Date()
 
-            date = date.split(' ')
+        date = date.split(' ')
 
-            date = date[2] + '-' + date[1] + '-' + date[3] 
+        date = date[2] + '-' + date[1] + '-' + date[3] 
 
-            param.Fecha = date
+        param.Fecha = date
 
-            noHouse.value.push(param)
-            setNoHouse({value: noHouse.value })
-            console.log(noHouse.value)
-            console.log(noHouse)          
-
-            // Ir a abajo
-            let bajar = window.innerHeight + 100000
-            window.scrollBy(0, bajar);
-            console.log(bajar)
-            
-          }  else {
-
-              console.log(noHouse.value)
-              console.log(noHouse)
-              console.log(typeof(noHouse.value))
-              console.log(typeof(noHouse))
-
-              console.log("No entró a la actulización")
-
-          }
+        noHouse.value.push(param)
        
-      }  
+        setNoHouse({value: noHouse.value })
+       
+        console.log(noHouse.value)
+        console.log(noHouse)          
 
-const handleOnChange = event => {
+        // Ir a abajo
+        let bajar = window.innerHeight + 100000
+        window.scrollBy(0, bajar);
+        console.log(bajar)
+        
+      }  else {
+
+          console.log(noHouse.value)
+          console.log(noHouse)
+          console.log(typeof(noHouse.value))
+          console.log(typeof(noHouse))
+
+          console.log("No entró a la actulización")
+
+      }
+    
+  }  
+
+  const handleOnChange = event => {
 
     setSpinner(true)
     
@@ -160,34 +159,26 @@ const handleOnChange = event => {
         setSpinner(false)
 
       }
+   
     }
 
   }
   
   const handleDrawerOpenFunction =  (esto) => {
 
+    console.log(handleDrawerOpen)
 
-			// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
-			console.log(handleDrawerOpen)
+    setHandleDrawerOpen(true)
 
-      // esto.setState({handleDrawerOpen: true})
-      setHandleDrawerOpen(true)
-  
+  }
 
+  const handleDrawerClose =  (esto) => {
 
-		}
+    console.log(handleDrawerOpen)
 
-		const handleDrawerClose =  (esto) => {
+    setHandleDrawerOpen(false)
 
-
-			// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
-			console.log(handleDrawerOpen)
-
-      // esto.setState({handleDrawerOpen: false})
-      setHandleDrawerOpen(false)
-  
-
-		}
+  }
 
 		console.log("uploadInput actualizado: 20")
     console.log(window.location.origin)
@@ -201,63 +192,65 @@ const handleOnChange = event => {
 		return(
 		
 			<div>
-    	 <Helmet>
+
+      	<Helmet>
                                 
           <title>Informes - Territorios de llamadas</title>
                 
         </Helmet>
 
-      			 <TopBar
-			        page={"home"} 
+        <TopBar
+          page={"home"} 
+          onOpenDrawer={ () => handleDrawerOpenFunction(this)}
+          history={props.history}
+        
+        />
+      
+        <Drawer
 
-			        onOpenDrawer={ () => handleDrawerOpenFunction(this)}
-			        history={props.history}
-			      ></TopBar>
-			      
-			
-			       <Drawer
-
-			        onClose={() => handleDrawerClose(this)}
-			        open={handleDrawerOpen}
-			        history={props.history}
-			      ></Drawer>
+          onClose={() => handleDrawerClose(this)}
+          open={handleDrawerOpen}
+          history={props.history}
+        
+        />
 
       	{ !show.value && 
 
-        <div  align="center" style={{marginTop: 150}}>
-      		<CardSelect   >
-          <h1>Ingrese territorio</h1>
-  				{/*<form method="post"  enctype="multipart/form-data"  onSubmit={handleOnSubmit}>*/}
-          <img src={ imageExcelInform } />
-  					
-          <br />
-          <br />
-           
-  					<input type="file" name="avatar"  onChange={handleOnChange.bind(this)}  accept=".xls,.xlsx,.ods,.ots,.uos,.xlt,.xlsm" />
-  					{/*<input type="submit" name="Subir"  value="Subir" />*/}
+          <div  align="center" style={{marginTop: 150}}>
+            <CardSelect>
+              
+              <h1>Ingrese territorio</h1>
+              
+              <img src={ imageExcelInform } />
+                
+              <br />
+              <br />
+            
+              <input type="file" name="avatar"  onChange={handleOnChange.bind(this)}  accept=".xls,.xlsx,.ods,.ots,.uos,.xlt,.xlsm" />
 
-            <br />
-            <br />
-            { spinner && <CircularProgress />}                       
-            { spinner &&   <Typography >Cargando territorio...</Typography>}
+              <br />
+              <br />
 
-          <br />
-          <a 
-            // name={link.name}
-            // alt={link.alt}
-            // className={styles.link}
-            onClick={() => props.history.push('/uploadexcel-ayuda' ) }
-            style={{marginLeft: 400,   cursor: "pointer", color: "#0070f3",  }}
-          >
-            Ayuda
-         
-          </a>
-          <br />
-          <br />
-         
-  				{/*</form>*/}
-          </CardSelect>
-        </div>
+              { spinner && <CircularProgress />}                       
+              { spinner &&   <Typography >Cargando territorio...</Typography>}
+
+              <br />
+             
+              <a 
+                
+                onClick={() => props.history.push('/uploadexcel-ayuda' ) }
+                style={{marginLeft: 400,   cursor: "pointer", color: "#0070f3",  }}
+              
+              >
+                Ayuda
+            
+              </a>
+              
+              <br />
+              <br />
+            
+            </CardSelect>
+          </div>
 
         }
         
