@@ -67,7 +67,6 @@ const useStyle = makeStyles((theme) => ({
   },
   extendedIcon: {
     marginRight: theme.spacing(1),
-
      
   },
 }));
@@ -76,7 +75,6 @@ function Shifts(props) {
   
   const classes = useStyles();
   const classe = useStyle();
-
   const [open, setOpen] = React.useState(false);
   const [idNoNull, setIdNoNull] = React.useState({value: true});
   const [currentData, setCurrentData] = React.useState('');
@@ -88,17 +86,6 @@ function Shifts(props) {
     console.log(props.reducidor)
    
   });
-
-  //Si el mes no tiene informes, no mostramos el botón de "Eliminar mes completo"   
-  if(props.idContent == "-" ){
-
-    idNoNull.value = false
-
-   } else {
-
-    idNoNull.value = true
-
-   }
 
   console.log(props)
   console.log("props")
@@ -115,21 +102,10 @@ function Shifts(props) {
 
   };
 
-  const _onBlur = event => {
-
-    console.log(event);
-    
-    // setCurrentData(event.target.value);
-
-    // console.log(currentData);
-
-  }
-
   return (
 
     <div className="deleteButton">
-    {/*FONT AWESOME TRASH https://fontawesome.com/icons/trash-alt?style=solid*/}
-    
+        
       <div className={classe.root} onClick={handleOpen} >
      
         <Fab variant="extended">

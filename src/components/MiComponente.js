@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { motion } from "framer-motion";
+
 import {Link} from 'react-router-dom';
 
 import MiComponente2 from './MiComponente2';
@@ -123,6 +125,7 @@ class MiComponente extends React.Component{
 
 		}
 	
+	
 	render() {
 
 		console.log(this.state.mes)
@@ -141,15 +144,8 @@ class MiComponente extends React.Component{
 
 		
 		return(
-			<div  
-			// style={{
-	
-		   //     backgroundImage: `url(${Background})`,   
-		   //     height: `100%`,
-		   //     width: `100%`,
+			<div>
 
-		   //   }}
-      		>
       			{console.log( this.state.handleDrawerOpen	 )}
       			 <TopBar
 			        page={"home"} 
@@ -158,7 +154,7 @@ class MiComponente extends React.Component{
 			        history={this.props.history}
 			      ></TopBar>
 			      
-			{console.log("estado " + this.state.handleDrawerOpen)}
+				{console.log("estado " + this.state.handleDrawerOpen)}
 			       <Drawer
 
 			        onClose={() => this.handleDrawerClose(this)}
@@ -205,6 +201,9 @@ class MiComponente extends React.Component{
 
 				
 			</div>
+
+			// </motion.div>
+			// </motion.div>
 			
 		)
 

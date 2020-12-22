@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {Link} from 'react-router-dom';
-
 import { connect } from 'react-redux';
 
 import  MONTH  from '../redux/actions/month';
@@ -13,14 +11,11 @@ import pencil from '../img/pencil.png';
 import { firestore } from "./FirebaseConfig";
 
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
 import Alert from '@material-ui/lab/Alert';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { purple, yellow } from '@material-ui/core/colors';
@@ -28,7 +23,6 @@ import { withStyles} from '@material-ui/core/styles';
 
 import MultilineTextFields from './MultilineTextFields';
 import EditMaterialInput from './EditMaterialInput';
-import SimpleSelect from './SimpleSelect';
 
 import './styles.css';
 
@@ -184,14 +178,14 @@ class Edit extends React.Component{
 
 		let informe = { 
 
-			name:   name,
-			month:  month,
-			ventas: ventas,
-			llamadas: llamadas,
-			horas: horas,
-			ausentismo: ausentismo,
-			reclamos: reclamos, 
-			comentarios: comentarios
+			name, 
+			month,
+			ventas,
+			llamadas,
+			horas,
+			ausentismo,
+			reclamos,
+			comentarios
 
 		}
 
@@ -261,19 +255,19 @@ class Edit extends React.Component{
 
 			}	else {
 
-			let informes
-			firestore.collection("informes").where("inform.mes", "==", informe.month).where("inform.name", "==", informe.name)
-			.get()
-			.then(function(querySnapshot) {
-            	querySnapshot.forEach(function(doc) {
+				let informes
+				firestore.collection("informes").where("inform.mes", "==", informe.month).where("inform.name", "==", informe.name)
+				.get()
+				.then(function(querySnapshot) {
+            		querySnapshot.forEach(function(doc) {
           
-	            	informes = {
-	                
-	                	id: doc.id
-	              	
-	              	}
+						informes = {
+						
+							id: doc.id
+						
+						}
 
-            	});
+            		});
             
 	            console.log(informe.id)
 	         	
@@ -368,7 +362,6 @@ class Edit extends React.Component{
 		console.log("ausentismo " + this.state.ausentismo)
 		console.log("reclamos " + this.state.reclamos)
 		console.log("Comentarios " + this.state.comentarios)
-		
 		console.log("RENDERIZANDO")
 		
 		return(
@@ -378,11 +371,7 @@ class Edit extends React.Component{
 				<CssBaseline />
 	            
 	            <h1 align="center">EDITAR INFORME</h1>
-	           	
-	           	<div className="h2">
-         
-	            </div>
-           
+	           	           
 	            <br />
 	            <br />
 	           
@@ -390,161 +379,166 @@ class Edit extends React.Component{
 	           	
 	           		<img src={ pencil } />
 	          
-	           </div>                  
+	           	</div>                  
 	          
 	           <div className="card-container">
 	               <Card className="card">
 
-	               <CardMedia/>
+						<CardMedia/>
 
-	               <CardContent>
+						<CardContent>
 
-	               		<Typography gutterBottom variant="h4" component="h4" align="center" >
-	                   
-	                    	INFORME DE TRABAJO<b/>
-	                   
-	                    </Typography>
-	                   
-	                    <hr />
-	                    <br />
-	                   
-	                    <Typography gutterBottom variant="h5">
+							<Typography gutterBottom variant="h4" component="h4" align="center" >
+						
+								INFORME DE TRABAJO<b/>
+						
+							</Typography>
+						
+							<hr />
+							
+							<br />
+						
+							<Typography gutterBottom variant="h5">
 
-	                    Nombre: {this.props.modified.nameContent}
-	                   
-	                    </Typography>
-	                    
-	                    <br />
+								Nombre: {this.props.modified.nameContent}
+						
+							</Typography>
+							
+							<br />
 
-	                    <Typography gutterBottom variant="h5">
+							<Typography gutterBottom variant="h5">
 
-	                    Mes: {this.props.modified.monthContent}
-	                   
-	                    </Typography>
-	                    
-	                    <br />
-	                   
-	                    <Typography gutterBottom variant="h5">
+								Mes: {this.props.modified.monthContent}
+						
+							</Typography>
+							
+							<br />
+						
+							<Typography gutterBottom variant="h5">
 
-	                   		{/* ↓  https://material-ui.com/es/components/text-fields/*/}
-	                    	<EditMaterialInput type= "Ventas" currentData={this.state.ventas}/>
-				       
-	                    </Typography>
-	                    
-	                    <br />
-	                    
-	                    <Typography gutterBottom variant="h5">
+								<EditMaterialInput type= "Ventas" currentData={this.state.ventas}/>
+						
+							</Typography>
+							
+							<br />
+							
+							<Typography gutterBottom variant="h5">
 
-	                    	<EditMaterialInput type= "Llamadas" currentData={this.state.llamadas}/> 
-	                    
-	                    </Typography>	
-	                   
-	                    <br />
-	                   
-	                    <Typography gutterBottom variant="h5">
+								<EditMaterialInput type= "Llamadas" currentData={this.state.llamadas}/> 
+							
+							</Typography>	
+						
+							<br />
+						
+							<Typography gutterBottom variant="h5">
 
-	                    	<EditMaterialInput type= "Horas" currentData={this.state.horas}/>
-				       
-	                    </Typography>
-	                   
-	                    <br />
-	                   
-	                    <Typography gutterBottom variant="h5">
+								<EditMaterialInput type= "Horas" currentData={this.state.horas}/>
+						
+							</Typography>
+						
+							<br />
+						
+							<Typography gutterBottom variant="h5">
 
-		                    <EditMaterialInput type= "Ausentismo" currentData={this.state.ausentismo}/>
-				       
-	                    </Typography>	
-	    
-	                    <br />
+								<EditMaterialInput type= "Ausentismo" currentData={this.state.ausentismo}/>
+						
+							</Typography>	
+			
+							<br />
 
-	                    <Typography gutterBottom variant="h5">
+							<Typography gutterBottom variant="h5">
 
-		                    <EditMaterialInput type= "Reclamos" currentData={this.state.reclamos}/>
-				       
-	                    </Typography>
-	    
-	                    <br />	
-	                    
-	                    <Typography gutterBottom variant="h5">
+								<EditMaterialInput type= "Reclamos" currentData={this.state.reclamos}/>
+						
+							</Typography>
+			
+							<br />	
+							
+							<Typography gutterBottom variant="h5">
 
+								<MultilineTextFields type= "Comentarios"  currentData={this.state.comentarios} />
+						
+							</Typography>		
 
-	                  		<MultilineTextFields type= "Comentarios"  currentData={this.state.comentarios} />
-				       
-	                    </Typography>		
+							<br />
+							
+							<Typography gutterBottom variant="h5">
 
-	                    <br />
-	                    
-	                    <Typography gutterBottom variant="h5">
+								{  this.state.err  && <Alert severity="error">Datos incompletos. Asegúrese de llenar todos los campos obligatorios correctamente.</Alert>   }
+								
+								{  this.state.err2  && <Alert severity="error">Los datos siguen incompletos.</Alert>   }
+								
+								{  this.state.err2  && <Alert severity="warning">Tenga en cuenta los siguientes puntos: 
 
-					      	{  this.state.err  && <Alert severity="error">Datos incompletos. Asegúrese de llenar todos los campos obligatorios correctamente.</Alert>   }
-					      	
-					      	{  this.state.err2  && <Alert severity="error">Los datos siguen incompletos.</Alert>   }
-					      	 
-					      	{  this.state.err2  && <Alert severity="warning">Tenga en cuenta los siguientes puntos: 
+								<br />
+								<br />
 
-					      	<br />
-					      	<br />
+								• No deje campos en blanco. El único campo que puede enviar sin llenar es el de "Comentarios".
+								
+								<br />
+								<br />
+								
+								• Si por ejemplo el publicador no tuvo publicaciones colocadas en el mes, ingrese el número 0 en vez de dejar ese campo en blanco.
+								
+								<br />
+								<br />
+								
+								•  Si no trabajó en el mes que está informando, ponga el número 0 en todos los campos excepto en el de "Nombre" y en el de "Comentarios".</Alert>   }
+									
+								{  this.state.success  && <Alert severity="success">Perfecto. El informe fue editado. </Alert>   }
+								
+								{  
 
-					      	 • No deje campos en blanco. El único campo que puede enviar sin llenar es el de "Comentarios".
-					      	 
-					      	<br />
-					      	<br />
-					      	
-					      	 • Si por ejemplo el publicador no tuvo publicaciones colocadas en el mes, ingrese el número 0 en vez de dejar ese campo en blanco.
-					      	
-					      	<br />
-					      	<br />
-					      	 
-					      	 •  Si no trabajó en el mes que está informando, ponga el número 0 en todos los campos excepto en el de "Nombre" y en el de "Comentarios".</Alert>   }
-					      		
-					      	{  this.state.success  && <Alert severity="success">Perfecto. El informe fue editado. </Alert>   }
-					      	
-					      	{  
+									this.state.err3  && <Alert severity="error">
 
-						      	this.state.err3  && <Alert severity="error">
+									Error 
 
-						      	Error 
+									<br /> 
+									<br /> 
+									
+									El informe que está tratando de editar ya no existe.
 
-						      	<br /> 
-						      	<br /> 
-						      	
-						      	El informe que está tratando de editar ya no existe.
+									</Alert>   
 
-						      	</Alert>   
+								}
 
-					      	}
+								{  this.state.err4  && <Alert severity="error">¡Su edición es contradictoria! <br /> <br /> Usted está tratando de decir que este empleado no tiene horas trabajadas pero al mismo tiempo que sí trabajó durante el mes. Si el empleado realmente no tuvo horas trabajadas, usted no puede poner en los otros campos otro valor que no sea 0.  </Alert>   }
+														
+								{ this.state.spinner && <CircularProgress />}								      	
+								{ this.state.spinner &&   <Typography >Procesando datos...</Typography>}
 
-					      	{  this.state.err4  && <Alert severity="error">¡Su edición es contradictoria! <br /> <br /> Usted está tratando de decir que este empleado no tiene horas trabajadas pero al mismo tiempo que sí trabajó durante el mes. Si el empleado realmente no tuvo horas trabajadas, usted no puede poner en los otros campos otro valor que no sea 0.  </Alert>   }
-					      						      
-					      	{ this.state.spinner && <CircularProgress />}								      	
-					      	{ this.state.spinner &&   <Typography >Procesando datos...</Typography>}
+								<br />
+							
+								<div className="editBox">
+									
+									<div className="backButton">
+									
+										<EditButton  variant="contained" color="primary" disabled={this.state.disabled} onClick= { () => this.add(this) }>
+										
+											Editar informe
+										
+										</EditButton>
+									
+									</div>
+									
+									<div className="backButton">
+									
+										<Button  onClick= { () => this.props.history.go(-1) }>{/*<-- this.props.history.go(-1) sirve para volver a la última página visitada por el usuario. Es un botón para volver a atrás.*/}
+										
+											Volver a atrás
+										
+										</Button>
 
-					      	<br />
-		                   
-		                   	<div className="editBox">
-		                   		<div className="backButton">
-			                   	<EditButton  variant="contained" color="primary" disabled={this.state.disabled} onClick= { () => this.add(this) }>
-							    
-							    	Editar informe
-						      	
-						      	</EditButton>
-						      	</div>
-						      	<div className="backButton">
-							    
-							      	<Button  onClick= { () => this.props.history.go(-1) }>{/*<-- this.props.history.go(-1) sirve para volver a la última página visitada por el usuario. Es un botón para volver a atrás.*/}
-								    
-								    	Volver a atrás
-							      	
-							      	</Button>
+									</div>
+							
+								</div>
+							</Typography>	
 
-							    </div>
-					       
-					        </div>
-	                    </Typography>	
-
-	                </CardContent>
-	                </Card>
-	            </div>				
+						</CardContent>
+	                
+					</Card>
+	        
+			    </div>				
 
 			</div>
 
@@ -552,14 +546,6 @@ class Edit extends React.Component{
 
 	}
 
-// cambioMes(e) {
-//     this.setState({
-//       mes: e.target.value
-//     })
-//     console.log(e.target.value)
-
-//   }
-	
 }
 
 const mapStateToProps = (state) =>{

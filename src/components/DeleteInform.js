@@ -105,12 +105,13 @@ export default function DeleteInform(props) {
 
   return (
     <div className="deleteButton">
-    {/*FONT AWESOME TRASH https://fontawesome.com/icons/trash-alt?style=solid*/}
-    { 
-      idNoNull.value &&   <TrashButton variant="contained" color="primary" onClick={handleOpen}>
-         <i class="fas fa-trash-alt " ></i> 
-       </TrashButton>
-    }
+    
+      
+      { 
+        idNoNull.value &&   <TrashButton variant="contained" color="primary" onClick={handleOpen}>
+          <i class="fas fa-trash-alt " ></i> 
+        </TrashButton>
+      }
     
       <Modal
         aria-labelledby="transition-modal-title"
@@ -128,6 +129,7 @@ export default function DeleteInform(props) {
           <div className={classes.paper}>
                     
             <div style={{ fontSize: 20}}>¿Seguro que quiere eliminar el informe de <b>"{props.nameContent}"</b> para el mes de <b>"{props.monthContent}"</b>?</div>
+            
             <p id="transition-modal-description">Tenga en cuenta que esta acción no se puede deshacer.</p>
 
             <div  className="noButton">

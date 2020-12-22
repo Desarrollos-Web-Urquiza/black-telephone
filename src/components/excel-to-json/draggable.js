@@ -57,6 +57,7 @@ const onDragEnd = (result, columns, setColumns) => {
     const sourceItems = [...sourceColumn.items];
     const destItems = [...destColumn.items];
     const [removed] = sourceItems.splice(source.index, 1);
+   
     destItems.splice(destination.index, 0, removed);
     setColumns({
       ...columns,
@@ -72,18 +73,23 @@ const onDragEnd = (result, columns, setColumns) => {
     console.log("Entra a IF onDragEnd ")
    
   } else {
+    
     const column = columns[source.droppableId];
 
     console.log(column)
+    
     const copiedItems = [...column.items];
 
     console.log(copiedItems)
+    
     const [removed] = copiedItems.splice(source.index, 1);
+    
     console.log(removed)
     copiedItems.splice(destination.index, 0, removed);
     console.log(copiedItems)
     console.log(source)
     console.log(source.droppableId)
+    
     setColumns({
       ...columns,
       [source.droppableId]: {
@@ -417,8 +423,8 @@ const onDragEnd = (result, columns, setColumns) => {
                                     userSelect: "none",
                                     padding: 16,
                                     margin: "0 0 8px 0",
-                                    height: "45px",
-                                    width: "70%",
+                                    height: "85px",
+                                    width: "80%",
 
                                     backgroundColor: snapshot.isDragging
                                       ? "#263B4A"

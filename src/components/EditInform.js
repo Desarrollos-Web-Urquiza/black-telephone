@@ -5,14 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import  MODIFIED  from '../redux/actions/modified';
 
 import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
-import Backdrop from '@material-ui/core/Backdrop';
-import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 import { purple, yellow } from '@material-ui/core/colors';
 import { withStyles} from '@material-ui/core/styles';
-  
-import { firestore } from "./FirebaseConfig";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -62,11 +57,11 @@ export default function EditeInform(props) {
 
     idNoNull.value=false
 
-   } else {
+  } else {
 
     idNoNull.value=true
 
-   }
+  }
 
   console.log(props)
 
@@ -79,14 +74,13 @@ export default function EditeInform(props) {
  
   return (
     <div className="editButton">
-         {/*FONT AWESOME TRASH https://fontawesome.com/icons/trash-alt?style=solid*/}
-    { 
-      idNoNull.value &&   <PencilButton variant="contained" color="primary" onClick={sendDatas}>
-         <i class="fa fa-pencil" ></i> 
-       </PencilButton> 
-    }
+         
+      { 
+        idNoNull.value &&   <PencilButton variant="contained" color="primary" onClick={sendDatas}>
+          <i class="fa fa-pencil" ></i> 
+        </PencilButton> 
+      }
 
-     
     </div>
   );
 }

@@ -2,6 +2,8 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
+import { motion } from "framer-motion";
+
 import { withRouter } from 'react-router-dom'
 import {Link} from 'react-router-dom';
 
@@ -349,6 +351,22 @@ class SimpleTable extends React.Component{
     return (
 
       <div>
+       {/* <motion.div */}
+		
+			{/* // initial="initial"
+			// animate="enter"
+			// exit="exit"
+			
+
+			// >  
+			// <motion.div */}
+{/* 		
+			// variants={{initial: {x: 80, opacity: 0, duration: 0.3,
+			// ease: [0.43, 0.13, 0.23, 0.76]},
+			// exit: { x: -80, opacity: 0, duration: 0.3, },
+			// enter: { x: 0, opacity: 1,   ease: [0.43, 0.13, 0.23, 0.76] }}}
+
+			// >   */}
         <div className="h1ofTable">
           
           <meta charset="utf-8" />
@@ -413,6 +431,9 @@ class SimpleTable extends React.Component{
        </TableContainer>
     
       </div>
+             
+			// </motion.div>
+			// </motion.div>
     );
   }
 }

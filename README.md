@@ -1,7 +1,7 @@
 Black Telephone by DWU
 =================
 
-This is a Web App to register reports and manage them.
+This is a Web App to register reports and manage them. See [live demo](https://black-telephone.vercel.app/)!
 
 "Black Telephone" is a fictitious call center that receives reports about the work of its employees.
 
@@ -17,6 +17,6 @@ npm start
 
 After that you can see the index page.
 
-Go to the "Informes" section to see the reports and "Estadísticas" to see the statistics.
+Go to the "Informes" section to see the reports and "Estadï¿½sticas" to see the statistics.
 
 Go to the "Llamadas" section for use the calls system.

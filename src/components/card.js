@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from "react-router-dom";
+
 import MiComponente2  from './MiComponente2.js'
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,9 +9,6 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-
-/* https://material-ui.com/es/components/cards/ */
 
 const useStyles = makeStyles({
   card: {
@@ -54,14 +53,24 @@ export default function SimpleCard(props) {
     
       <CardContent> 
         
-      <MiComponente2 test={props} month= {props.month}/>
+        <MiComponente2 test={props} month= {props.month}/>
       
       </CardContent>
       
       <CardActions>
       
         <Button  onClick={() => props.properties.history.push(props.properties.history.location.pathname + "-ver/" + props.month ) } size="small">ver completo</Button>
-          
+        
+        {/* <Link to={props.properties.history.location.pathname + "-ver/" + props.month}>
+        <Button
+          // icon={<ArrowLeftOutlined/>}
+          size="large"
+          shape="circle"
+        >
+          Ver completo
+        </Button>
+      </Link> */}
+
       </CardActions>
     
     </Card>

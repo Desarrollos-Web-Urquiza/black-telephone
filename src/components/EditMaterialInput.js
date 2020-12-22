@@ -6,7 +6,6 @@ import  ERR  from '../redux/actions/err';
 import  MONTH  from '../redux/actions/month';
 
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 
 function EditFormPropsTextFields(props) {
 
@@ -24,10 +23,14 @@ function EditFormPropsTextFields(props) {
     }
     
     console.log(event.target)
+    
     setCamp(event.target );
+    
     console.log(props.type);
     console.log(event.target.value)
+    
     let array =[event.target.value, props.type ]
+    
     props.MONTH(array)
 
   };

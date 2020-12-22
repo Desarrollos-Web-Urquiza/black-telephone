@@ -4,10 +4,11 @@ import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { makeStyles } from '@material-ui/core/styles';
-import menuItems from './data/menu-items'
-import Divider from '@material-ui/core/Divider';
-import styles from './drawer.module.css'
 import Typography from '@material-ui/core/Typography';
+
+import menuItems from './data/menu-items'
+
+import styles from './drawer.module.css'
 
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 export default ({page, onClose, open, history}) => {
   
   const classes = useStyles()
+  
   console.log(open)
 
   return(
@@ -40,7 +42,6 @@ export default ({page, onClose, open, history}) => {
         <nav>
           {menuItems.map(link => 
             <Typography key={link.id} variant="h5" component="h2">
-              {/*<Link href={link.link}>*/}
                 <a 
                   name={link.name}
                   alt={link.alt}
@@ -49,7 +50,6 @@ export default ({page, onClose, open, history}) => {
                 >
                   {link.name}
                 </a>
-              {/*</Link>*/}
             </Typography>
           )}
         </nav>

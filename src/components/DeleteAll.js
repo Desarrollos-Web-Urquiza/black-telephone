@@ -53,6 +53,7 @@ const TrashButton = withStyles((theme) => ({
 }))(Button);
 
 export default function DeleteAll(props) {
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [filter, setFilter] = React.useState({value: true});
@@ -128,10 +129,9 @@ export default function DeleteAll(props) {
 
   return (
     <div className="deleteButton">
-      
-      {/*FONT AWESOME TRASH https://fontawesome.com/icons/trash-alt?style=solid*/}
-    
-      { props.showDeleteAll && props.issetMonth && <TrashButton variant="contained" color="primary"  onClick={handleOpen} >
+          
+      { 
+        props.showDeleteAll && props.issetMonth && <TrashButton variant="contained" color="primary"  onClick={handleOpen} >
       
           Eliminar mes completo<i class="fas fa-exclamation-triangle" style={{marginLeft: 5}} ></i> 
       
@@ -159,6 +159,7 @@ export default function DeleteAll(props) {
           <div className={classes.paper}>
           
             <div style={{ fontSize: 20, marginTop: 15 }}>¿Seguro quiere eliminar todos los informes del mes de <b>"{props.monthContent}"</b>?</div>
+            
             <p id="transition-modal-description">Esta acción no se puede deshacer. Si aun así usted quiere borrar todos los informes del mes, debe escribir exactamente <b>"{props.monthContent}"</b> sin comillas.</p>
 
             <TextField

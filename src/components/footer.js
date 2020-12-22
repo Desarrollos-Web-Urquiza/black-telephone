@@ -44,6 +44,18 @@ class Footer extends React.Component{
                 </Link>
               </div>  
             )*/}
+            <Typography variant="body2">
+              <br/>
+              Telemarketing
+              <br/>
+              
+              Servicios telefónicos
+              <br/>
+              Publicidad
+              <br/>
+              Atención al cliente
+              <br/>
+            </Typography>
           </Grid>
           <Grid item xs={12} md={6} lg={3}>
             <Typography variant="h6" className={styles.subtitle}>Contacto</Typography>
