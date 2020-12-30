@@ -18,7 +18,7 @@ function EditFormPropsTextFields(props) {
     
     if(props.type == "Horas" && event.target.value > 720){
 
-       event.target.value = 0
+      event.target.value = 0
 
     }
     
@@ -125,21 +125,21 @@ function EditFormPropsTextFields(props) {
 
   return (
 
-      <div>
-        
-        <TextField
-        
-          id="standard-number"
-          label={props.type}
-          type="number"
-          InputProps={{ inputProps: { min: 0,  } }}
-          error={err.value}
-          onChange = {  handleChange        }
-          defaultValue={props.currentData}
+    <div>
+      
+      <TextField
+      
+        id="standard-number"
+        label={props.type}
+        type="number"
+        InputProps={{ inputProps: { min: 0,  } }}
+        error={err.value}
+        onChange = {  handleChange        }
+        defaultValue={props.currentData}
 
-        />
-        
-      </div>
+      />
+      
+    </div>
      
   );
 }

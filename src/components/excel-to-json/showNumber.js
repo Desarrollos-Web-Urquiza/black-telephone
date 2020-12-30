@@ -330,7 +330,7 @@ const ShowNumber = props => {
                   </Tooltip>
               
                 </Grid> 
-             }
+              }
             
             </div>
           

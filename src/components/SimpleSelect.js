@@ -81,14 +81,17 @@ function SimpleSelect(props) {
 
   }  else {
 
-      err.value = false
+    err.value = false
       
   } 
 
   return (
     <div>
+    
       <FormControl className={classes.formControl}>
+     
         <InputLabel id="demo-simple-select-label">Nombre</InputLabel>
+     
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -96,6 +99,7 @@ function SimpleSelect(props) {
           error={err.value} 
           onChange={handleChange}
         >
+          
           <MenuItem value={"Mónica Garrido"}>Mónica Garrido</MenuItem>
           <MenuItem value={"Juan López"}>Juan López</MenuItem>
           <MenuItem value={"Sara Jiménez"}>Sara Jiménez</MenuItem>
@@ -113,10 +117,13 @@ function SimpleSelect(props) {
           <MenuItem value={"Francesca Meazza"}>Francesca Meazza</MenuItem>
           
         </Select>
+     
       </FormControl>
       
     </div>
+    
   );
+
 }
 
 const mapStateToProps = (state) =>{

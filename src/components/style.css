@@ -36,6 +36,7 @@
 
     margin-left: 10px;
     margin-top: 10px;
+
 }
 
 /*CELULAR*/
@@ -100,7 +101,6 @@
    margin-right:  30px ;
    margin-top: 30px ;
 
-
 }
 
 .noButton{
@@ -137,33 +137,21 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
-
-
 }
 
 .numberBox{
 
-    /*float: right;*/
-   /* margin-right:  -10px ;
-    margin-top: -120px ;*/
     display: flex;
     flex-wrap: wrap;
-    /*justify-content: flex-end;*/
     justify-content: center
- 
- 
- 
+  
  }
  
  .pencil{
  
-    /*float: right;*/
     margin-right:  -10px ;
-    margin-top: -25px ;
-  
+    margin-top: -25px ;  
     justify-content: flex-end;
- 
- 
  
  }
  
@@ -171,21 +159,16 @@
 
     margin-top: 33px;
     margin-right: 10px; 
-     float: right;
+    float: right;
     cursor: pointer;
 
 }
 
-
 .pencilName{
 
-    /*float: right;*/
     margin-right:  -10px ;
     margin-top: 25px ;
-  
     justify-content: flex-end;
- 
- 
  
  }
 

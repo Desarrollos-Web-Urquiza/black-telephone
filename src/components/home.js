@@ -2,10 +2,9 @@ import React from 'react';
 
 import {Link} from 'react-router-dom';
 
-import styles from './footer.module.css'
+import { motion } from "framer-motion";
 
-import Grid from '@material-ui/core/Grid'
-import Typography from '@material-ui/core/Typography';
+import styles from './footer.module.css'
 
 import services from './data/services'
 import { home } from './data/sliders'
@@ -13,6 +12,8 @@ import { home } from './data/sliders'
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles'
 
 import Footer from './footer';
@@ -56,83 +57,106 @@ export default function Home(props){
     setDrawerOpened(false)
  
   }
-		
+    
+  const transition = {
+    duration: 0.3,
+    ease: [0.43, 0.13, 0.23, 0.76]
+  };
+
+  const backVariants = {
+    initial: {x:0, opacity: 0, transition},
+    exit: { x: 0, opacity: 0, transition },
+    enter: { x: 0, opacity: 1, transition }
+  };
+  
   return(
     
-    <div>		
+    //Animación de transición
+    <motion.div
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
+      <motion.div variants={backVariants}>
 
-      <TopBar
-      
-        page={"home"} 
-        onOpenDrawer={handleDrawerOpen}
-        history={props.history}
-      
-      />
+        <div>		
 
-      <Drawer
-
-        onClose={handleDrawerClose}
-        open={drawerOpened}
-        history={props.history}
-      
-       />
-
-      <Carousel carouselData={home} />
-
-      <Grid id="services" container spacing={4}>
-    
-        {
-          services.map(service => 
+          <TopBar
           
-          <Grid key={service.image} item xs={12} sm={6} md={3}>
-            
-            <Card className={classes.card}>
-            
-              <CardContent>
-                
-                <img  src={`/images/${service.image}`} alt={service.image} style={{width: 90}}/>
-                
-                <Typography className={classes.title} variant="h5" component="h2">
-                
-                  {service.title}
-                
-                </Typography>
-                
-                <Typography variant="body2" component="p">
-                
-                  {service.desc}
-                
-                </Typography>
+            page={"home"} 
+            onOpenDrawer={handleDrawerOpen}
+            history={props.history}
+          
+          />
+
+          <Drawer
+
+            onClose={handleDrawerClose}
+            open={drawerOpened}
+            history={props.history}
+          
+          />
+
+          <Carousel carouselData={home} />
+
+          <Grid id="services" container spacing={4}>
+        
+            {
+              services.map(service => 
               
-              </CardContent>
-              
-              <CardActions className={classes.cardActions}>
+              <Grid key={service.image} item xs={12} sm={6} md={3}>
                 
-                <Link href={`/${service.link}`}>
+                <Card className={classes.card}>
+                
+                  <CardContent>
+                    
+                    <img  src={`/images/${service.image}`} alt={service.image} style={{width: 90}}/>
+                    
+                    <Typography className={classes.title} variant="h5" component="h2">
+                    
+                      {service.title}
+                    
+                    </Typography>
+                    
+                    <Typography variant="body2" component="p">
+                    
+                      {service.desc}
+                    
+                    </Typography>
                   
-                  <a className={styles.link} alt={service.title} />
+                  </CardContent>
+                  
+                  <CardActions className={classes.cardActions}>
+                    
+                    <Link href={`/${service.link}`}>
                       
-                </Link>
-              
-              </CardActions>
+                      <a className={styles.link} alt={service.title} />
+                          
+                    </Link>
+                  
+                  </CardActions>
+                
+                </Card>
             
-            </Card>
-        
-          </Grid>
-        
-        )}
-  
-      </Grid>
+              </Grid>
+            
+            )}
       
-      <Section  />
+          </Grid>
+          
+          <Section  />
 
-      <br/>
-      <br/>
-      <br/>
+          <br/>
+          <br/>
+          <br/>
 
-      <Footer properties={props}/>
+          <Footer properties={props}/>
 
-    </div>
+        </div>
+    
+     </motion.div>
+		
+    </motion.div>
 
   )
 	

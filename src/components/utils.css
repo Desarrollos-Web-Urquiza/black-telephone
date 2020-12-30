@@ -181,44 +181,31 @@
   position: absolute;
   left: -60px;
   right: -4px;
-  /* width: 200vw; */
   z-index: 1  ;
-
-  
-
 }
 .poste{
-
   margin-left: -50px;
   height: 100%;
   z-index: -1  ;
-
 }
   
 @media(min-width: 558px)   {
-    .poste2 {
-
-      float: right;
-      margin-top: -320px;
-      z-index: -1  ;
-      height: 100%;
-
-    }
+  .poste2 {
+    float: right;
+    margin-top: -320px;
+    z-index: -1  ;
+    height: 100%;
+  }
 }
 
 @media(max-width: 558px)   {
-    .poste2 {
-
-      display: none
-
-    }
+  .poste2 {
+    display: none
+  }
 }
 
-
 .h1{
-
   align-self:  center  ;
-
 }
 
 .sectionBgMirror::before {

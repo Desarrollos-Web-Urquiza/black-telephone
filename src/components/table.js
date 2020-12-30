@@ -2,12 +2,8 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 
-import { motion } from "framer-motion";
-
 import { withRouter } from 'react-router-dom'
-import {Link} from 'react-router-dom';
 
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -16,7 +12,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 import { firestore } from "./FirebaseConfig";
@@ -68,7 +63,7 @@ class SimpleTable extends React.Component{
   //En esta función se encuentra la consulta directa a la base de datos
   createData (esto, mes)  {
        
-    return new Promise(function(resolve, reject) {
+    return new Promise(function(resolve) {
 
       console.log(esto)        
       console.log(mes)              
@@ -198,6 +193,7 @@ class SimpleTable extends React.Component{
       }
 
       name = coincidenciaDeNombre.name
+      
       let  ventas = coincidenciaDeNombre.ventas
       let  llamadas =coincidenciaDeNombre.llamadas
       let  horas = coincidenciaDeNombre.horas
@@ -211,12 +207,6 @@ class SimpleTable extends React.Component{
       return { name, ventas, llamadas, horas, ausentismo, reclamos, notes, id };
 
     }
-
-    // function createDatas(name, ventas, llamadas, horas, ausentismo, reclamos, notes) {
-
-    //   return { name, ventas, llamadas, horas, ausentismo, reclamos, notes };
-
-    // }
 
     const rows = [
 
@@ -344,35 +334,20 @@ class SimpleTable extends React.Component{
   }
 
   render(){
-    // https://codesandbox.io/s/material-demo-5rdmx?file=/demo.js 
-    // className="headofTable"
+  
     console.log(this.state.issetMonth)
 
     return (
 
       <div>
-       {/* <motion.div */}
-		
-			{/* // initial="initial"
-			// animate="enter"
-			// exit="exit"
-			
-
-			// >  
-			// <motion.div */}
-{/* 		
-			// variants={{initial: {x: 80, opacity: 0, duration: 0.3,
-			// ease: [0.43, 0.13, 0.23, 0.76]},
-			// exit: { x: -80, opacity: 0, duration: 0.3, },
-			// enter: { x: 0, opacity: 1,   ease: [0.43, 0.13, 0.23, 0.76] }}}
-
-			// >   */}
+       
         <div className="h1ofTable">
           
           <meta charset="utf-8" />
           <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
           <h3>Informes del mes de "{this.props.month}"</h3>
+          
           { this.state.spinner &&   <CircularProgress /> }
           { this.state.spinner &&   <Typography >Cargando mes...</Typography>}
         
@@ -384,9 +359,11 @@ class SimpleTable extends React.Component{
         <br />
         
         <TableContainer component={Paper} className="container">
+         
           <Table  stickyHeader={true} minWidth= "650" aria-label="simple table" id="tblData" >
             
             <TableHead>
+             
               <TableRow>
 
                 <TableCell><b>Empleado</b></TableCell>
@@ -399,6 +376,7 @@ class SimpleTable extends React.Component{
                 <TableCell align="right"></TableCell>   
 
               </TableRow>
+           
             </TableHead>
             
             <TableBody>
@@ -422,18 +400,17 @@ class SimpleTable extends React.Component{
                   <TableCell align="right"><EditInform properties={this.props} idContent={row.id} monthContent={this.props.month} nameContent={row.name} currentventas={row.ventas} currentllamadas={row.llamadas} currentHoras={row.horas} currentausentismo={row.ausentismo} currentreclamos={row.reclamos} currentNotes={row.notes}  /><DeleteInform idContent={row.id} monthContent={this.props.month} nameContent={row.name} /></TableCell>
                                     
                 </TableRow>
+              
               ))}
             
             </TableBody>
           
           </Table>
        
-       </TableContainer>
+        </TableContainer>
     
       </div>
              
-			// </motion.div>
-			// </motion.div>
     );
   }
 }

@@ -6,7 +6,6 @@ import  ERR  from '../redux/actions/err';
 import  MONTH  from '../redux/actions/month';
 
 import TextField from '@material-ui/core/TextField';
-import { makeStyles } from '@material-ui/core/styles';
 
 function FormPropsTextFields(props) {
 
@@ -19,15 +18,19 @@ function FormPropsTextFields(props) {
     
     if(props.type == "Horas" && event.target.value > 720){
 
-       event.target.value = 0
+      event.target.value = 0
 
     }
     
     console.log(event.target)
+   
     setCamp(event.target );
+   
     console.log(props.type);
     console.log(event.target.value)
+   
     let array =[event.target.value, props.type ]
+   
     props.MONTH(array)
 
   };
@@ -56,7 +59,7 @@ function FormPropsTextFields(props) {
       
       //Si el usuario los llena, le saca el color rojo 
     
-    } else{
+    } else  {
 
       err.value = false
 
@@ -97,7 +100,7 @@ function FormPropsTextFields(props) {
 
       err.value = true
 
-    } else{
+    } else  {
 
       err.value = false
 
@@ -112,21 +115,21 @@ function FormPropsTextFields(props) {
 
   return (
 
-      <div>
-        
-        <TextField
-        
-          id="standard-number"
-          label={props.type}
-          type="number"
-          InputProps={{ inputProps: { min: 0,  } }}
-          error={err.value}
-          onChange = {  handleChange        }
+    <div>
+      
+      <TextField
+      
+      id="standard-number"
+      label={props.type}
+      type="number"
+      InputProps={{ inputProps: { min: 0, } }}
+      error={err.value}
+      onChange = { handleChange }
 
-        />
-        
-      </div>
-     
+      />
+      
+    </div>
+    
   );
 }
 

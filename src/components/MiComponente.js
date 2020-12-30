@@ -2,18 +2,16 @@ import React from 'react';
 
 import { motion } from "framer-motion";
 
-import {Link} from 'react-router-dom';
-
 import MiComponente2 from './MiComponente2';
 import SimpleCard  from './card.js'
 import TopBar from './topBar'
 import Drawer from './drawer'
 import Footer from './footer';
+import Screen from './Screen'
 
-import Background from '../img/D70.jpg';
 import ExcelLogo from '../img/Excel.png';
 
-import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import { green, purple, grey } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -48,7 +46,6 @@ const CardSelect = withStyles((theme) => ({
 class MiComponente extends React.Component{
 	
 	constructor(props) {
-    	
     	super(props);
 	    
 	    this.state ={ mes: 'Junio 2020', handleDrawerOpen: false }
@@ -96,36 +93,26 @@ class MiComponente extends React.Component{
 	    }
 	}	
 
-	
-	// handleDrawerOpen(openOrNo) {
-	
-
-	//     this.setState({handleDrawerOpen: openOrNo});
-	
-
-	// };
-
-		handleDrawerOpen (esto) {
+	handleDrawerOpen (esto) {
 
 
-			// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
-			console.log(esto.state.handleDrawerOpen)
+		// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
+		console.log(esto.state.handleDrawerOpen)
 
-			esto.setState({handleDrawerOpen: true})
+		esto.setState({handleDrawerOpen: true})
 
-		}
+	}
 
-		handleDrawerClose (esto) {
+	handleDrawerClose (esto) {
 
 
-			// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
-			console.log(esto.state.handleDrawerOpen)
+		// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
+		console.log(esto.state.handleDrawerOpen)
 
-			esto.setState({handleDrawerOpen: false})
+		esto.setState({handleDrawerOpen: false})
 
-		}
-	
-	
+	}
+		
 	render() {
 
 		console.log(this.state.mes)
@@ -134,38 +121,39 @@ class MiComponente extends React.Component{
 
 		console.log(this.props.reducidor)
 
-		// const handleDrawerOpen= () => {
-
-
-		// 	this.state.handleDrawerOpen = !this.state.handleDrawerOpen
-		// 	console.log(this.state.handleDrawerOpen)
-
-		// }
-
+		console.log(this.props.history)
 		
 		return(
+
 			<div>
 
-      			{console.log( this.state.handleDrawerOpen	 )}
-      			 <TopBar
-			        page={"home"} 
+				{console.log( this.state.handleDrawerOpen )}
+				
+				<TopBar
+				
+				page={"home"} 
+				onOpenDrawer={ () => this.handleDrawerOpen(this)}
+				history={this.props.history}
 
-			        onOpenDrawer={ () => this.handleDrawerOpen(this)}
-			        history={this.props.history}
-			      ></TopBar>
-			      
+				/>
+				
 				{console.log("estado " + this.state.handleDrawerOpen)}
-			       <Drawer
+				
+				<Drawer
 
-			        onClose={() => this.handleDrawerClose(this)}
-			        open={this.state.handleDrawerOpen}
-			        history={this.props.history}
-			      ></Drawer>
+					onClose={() => this.handleDrawerClose(this)}
+					open={this.state.handleDrawerOpen}
+					history={this.props.history}
+				/>
 
 				<h2 align="center" style={{marginLeft: 5}} style={{marginTop: 90 }} > TRABAJO DE EMPLEADOS DE "BLACK TELEPHONE"</h2>
+				
 				<div align="center" >
+					
 					<div className="card-container">
-	               		<CardSelect className="cardSelect">
+					
+						<CardSelect className="cardSelect">
+					
 							<h3 align="center">¿Qué mes desea ver?</h3>
 		
 							<select value={this.state.mes} onChange={this.cambioMes} style={{height: 40, padding: 10}} >
@@ -178,33 +166,29 @@ class MiComponente extends React.Component{
 							<br />
 							<br />
 
-				        	{ this.props.show && <ColorButton variant="contained" color="primary"  onClick= { () => this.exportTableToExcel("tblData", 'Informes Black Telephone - ' + this.state.mes )   } >
-				                
-				            	Descargar mes en Excel  {/*<i class="far fa-file-excel fa-3x" style={{marginLeft: 10}}></i>*/}	
-				                 
-				        		<img src={ExcelLogo} alt="Excel" style={{marginLeft: 10,}}  /> 
-				        	
-				        	</ColorButton> }
+							{ this.props.show && <ColorButton variant="contained" color="primary"  onClick= { () => this.exportTableToExcel("tblData", 'Informes Black Telephone - ' + this.state.mes )   } >
+								
+								Descargar mes en Excel  {/*<i class="far fa-file-excel fa-3x" style={{marginLeft: 10}}></i>*/}	
+								
+								<img src={ExcelLogo} alt="Excel" style={{marginLeft: 10,}}  /> 
+							
+							</ColorButton> }
 				
-					        <br />
-					        <br />
+							<br />
+							<br />
 					
 						</CardSelect>
-	            	</div>		
+					
+					</div>		
+			
 				</div>
-      			
+				
 				<SimpleCard  properties={this.props} month={this.state.mes}/> 
 
-
-
 				<Footer properties={this.props}/>	
-
 				
 			</div>
-
-			// </motion.div>
-			// </motion.div>
-			
+						
 		)
 
 	}

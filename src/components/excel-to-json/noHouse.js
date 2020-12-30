@@ -111,7 +111,6 @@ export default function NoHouse(props) {
 
   console.log(props)
   console.log(props.noHouses[0])
-  
   console.log(rows)
 
   const deleteOfArray = (param) => {

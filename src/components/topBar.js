@@ -1,16 +1,16 @@
 import React from 'react';
 
-
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import IconButton from '@material-ui/core/IconButton';
-import styles from './topBar.module.css';
-import menuItems from './data/menu-items'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Hidden from '@material-ui/core/Hidden';
+
+import styles from './topBar.module.css';
+import menuItems from './data/menu-items'
 
 const ElevationScroll = ({children}) => {
   const trigger = useScrollTrigger({
@@ -25,7 +25,6 @@ const ElevationScroll = ({children}) => {
   });
 }
 
-
 export default function TopBar({page, onOpenDrawer, history}) {
 
   return(
@@ -35,16 +34,13 @@ export default function TopBar({page, onOpenDrawer, history}) {
           <Container className={styles.container}>
             <Grid container justify="space-between" alignItems="center">
               <Grid item xs={3}>
-               {/* <Link href="/">*/}
                   <a className={styles.logo} onClick={() => history.push("/") } >
                     <img className={styles.logoImg} src="/images/logoBT.png" alt=""   />
                   </a>
-                {/*</Link>*/}
               </Grid>
               <Hidden smDown>
                 <Grid item xs={9} className={styles.links}>
                   {menuItems.map(item => 
-                    /*<Link key={item.id} href={item.link}>*/
                       <a 
                         name={item.name}
                         className={styles.link}
@@ -57,7 +53,6 @@ export default function TopBar({page, onOpenDrawer, history}) {
                         {console.log(history)}
                         {console.log(onOpenDrawer)    }
                       </a>
-                    /*</Link>*/
                   )}
                 </Grid>
               </Hidden>

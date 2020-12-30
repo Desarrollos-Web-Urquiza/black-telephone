@@ -1,8 +1,6 @@
 import React, {  useEffect  } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-
-import { connect } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
 
 import  MONTH  from '../../redux/actions/month';
 

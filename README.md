@@ -1,4 +1,4 @@
-Black Telephone by DWU
+﻿Black Telephone by DWU
 =================
 
 This is a Web App to register reports and manage them. See [live demo](https://black-telephone.vercel.app/)!
@@ -17,6 +17,6 @@ npm start
 
 After that you can see the index page.
 
-Go to the "Informes" section to see the reports and "Estad�sticas" to see the statistics.
+Go to the "Informes" section to see the reports and "Estadisticas" to see the statistics.
 
 Go to the "Llamadas" section for use the calls system.

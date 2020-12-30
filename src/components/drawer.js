@@ -28,32 +28,51 @@ export default ({page, onClose, open, history}) => {
   console.log(open)
 
   return(
+    
     <div>
+     
       <Drawer classes={{paper: classes.drawer}} anchor="right" open={open}>
+     
         <div>
+         
           <IconButton 
             edge="start"
             color="inherit" aria-label="menu"
             onClick={onClose}
           >
+           
             <CloseIcon />
+          
           </IconButton>
+        
         </div>
+        
         <nav>
+          
           {menuItems.map(link => 
-            <Typography key={link.id} variant="h5" component="h2">
-                <a 
-                  name={link.name}
-                  alt={link.alt}
-                  className={styles.link}
-                  onClick={() => history.push((link.link).toString() ) }
-                >
-                  {link.name}
-                </a>
+           
+           <Typography key={link.id} variant="h5" component="h2">
+              
+              <a 
+                name={link.name}
+                alt={link.alt}
+                className={styles.link}
+                onClick={() => history.push((link.link).toString() ) }
+              >
+            
+                {link.name}
+            
+              </a>
+          
             </Typography>
+
           )}
         </nav>
+      
       </Drawer>
+    
     </div>
+    
   )
+
 }

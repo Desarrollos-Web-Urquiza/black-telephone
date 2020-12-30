@@ -47,6 +47,7 @@ const PencilButton = withStyles((theme) => ({
 }))(Button);
 
 export default function EditeInform(props) {
+  
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [idNoNull, setIdNoNull] = React.useState({value: true});
@@ -68,11 +69,15 @@ export default function EditeInform(props) {
   let currentData = props
 
   const sendDatas = () => {
+  
     props.properties.history.push("/edit")
+  
     dispatch(MODIFIED(currentData)) 
+  
   };
  
   return (
+    
     <div className="editButton">
          
       { 
@@ -82,5 +87,6 @@ export default function EditeInform(props) {
       }
 
     </div>
+    
   );
 }

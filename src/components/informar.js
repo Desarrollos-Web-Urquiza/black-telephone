@@ -326,8 +326,7 @@ class Informar extends React.Component{
 	}
 		
 	handleDrawerOpen (esto) {
-
-		// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
+		
 		console.log(esto.state.handleDrawerOpen)
 
 		esto.setState({handleDrawerOpen: true})
@@ -335,8 +334,7 @@ class Informar extends React.Component{
 	}
 
 	handleDrawerClose (esto) {
-
-		// esto.state.handleDrawerOpen = !esto.state.handleDrawerOpen
+		
 		console.log(esto.state.handleDrawerOpen)
 
 		esto.setState({handleDrawerOpen: false})
@@ -363,18 +361,18 @@ class Informar extends React.Component{
 
 				<TopBar
 
-					onOpenDrawer={ () => this.handleDrawerOpen(this)}
-					history={this.props.history}
+				onOpenDrawer={ () => this.handleDrawerOpen(this)}
+				history={this.props.history}
 					
-				></TopBar>
+				/>
 				
 				<Drawer
 
-					onClose={() => this.handleDrawerClose(this)}
-					open={this.state.handleDrawerOpen}
-					history={this.props.history}
+				onClose={() => this.handleDrawerClose(this)}
+				open={this.state.handleDrawerOpen}
+				history={this.props.history}
 				
-				></Drawer>
+				/>
 	           
 			    <br />           
 	            
@@ -404,6 +402,7 @@ class Informar extends React.Component{
 							</Typography>
 						
 							<hr />
+							
 							<br />
 						
 							<Typography gutterBottom variant="h5">
@@ -497,15 +496,15 @@ class Informar extends React.Component{
 
 									this.state.err3  && <Alert severity="warning">Deberá comunicarle este error a su gerente si se da alguno de los siguientes casos: 
 
-									<br /> 
-									<br /> 
+										<br /> 
+										<br /> 
 
-									• Usted ingresó algún dato erróneo en la primera vez que envió su informe y lo que pretende ahora es volverlo a enviar para corregirlo.
-									
-									<br />
-									<br />
-									
-									• Está viendo este mensaje pero en realidad nunca envió su informe. De ser así, es posible que otro empleado erróneamente haya informado por usted. Debe comunicar este error lo antes posible.
+										• Usted ingresó algún dato erróneo en la primera vez que envió su informe y lo que pretende ahora es volverlo a enviar para corregirlo.
+										
+										<br />
+										<br />
+										
+										• Está viendo este mensaje pero en realidad nunca envió su informe. De ser así, es posible que otro empleado erróneamente haya informado por usted. Debe comunicar este error lo antes posible.
 
 									</Alert>   
 
@@ -526,7 +525,8 @@ class Informar extends React.Component{
 							</Typography>	
 
 						</CardContent>
-	                </Card>
+	                
+					</Card>
 	            
 				</div>				
 	            

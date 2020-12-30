@@ -242,6 +242,7 @@ class Edit extends React.Component{
 			if (this.state.horas == 0 && posibleContradiction == true && this.state.horas != "" ) {
 
 				console.log("INFORME CONTRADICTORIO!!!!")
+				
 				esto.props.ERR("contradiction")
 
 				esto.setState({err4: true})
@@ -269,83 +270,83 @@ class Edit extends React.Component{
 
             		});
             
-	            console.log(informe.id)
+	            	console.log(informe.id)
 	         	
-	         	if(informes.id != undefined) {
+	         		if(informes.id != undefined) {
 
-	         		console.log("Existe informe previo de este publicador")
+	         			console.log("Existe informe previo de este publicador")
 	         		
-	         		firestore.collection("informes").doc(esto.state.id).update({
+	         			firestore.collection("informes").doc(esto.state.id).update({
 	              
-	              		inform:{ 
+							inform:{ 
 
-	             			name: informe.name,
-			             	ventas: informe.ventas,
-			              	mes: informe.month,
-			              	llamadas: informe.llamadas,
-			              	ausentismo: informe.ausentismo,
-			              	horas: informe.horas,
-			              	reclamos: informe.reclamos,
-			              	notas: informe.comentarios
-	              		
-	              		}
+								name: informe.name,
+								ventas: informe.ventas,
+								mes: informe.month,
+								llamadas: informe.llamadas,
+								ausentismo: informe.ausentismo,
+								horas: informe.horas,
+								reclamos: informe.reclamos,
+								notas: informe.comentarios
+							
+							}
 	                 
-	        		})
-	        		.then(function() {
-	            			
-	            		console.log("inform updated");
-			            
-			            esto.setState({success: true})
-			            esto.setState({spinner: false})
-			            esto.setState({disabled: false})
-			            esto.setState({err: false})
-						esto.setState({err2: false})
-						esto.setState({err3: false})
-						esto.setState({err4: false})
-						esto.setState({err5: false})
-			           
-						//Ir a abajo (no siempre funciona)
-						window.scrollBy(0, window.innerHeight);
-			           
-			            // ↓ Este segundo dispatch lo único que hace es evitar un bug que surgía al enviar un primer informe, y si queríamos volver a usar el select este quedaba en blanco pero seguía teniendo value.
-			            esto.props.MONTH("noReset")
-			           
-			            //Dejamos de marcar en rojo cualquier campo que pudo haber dejado vacío el usuario
-			            esto.props.ERR("NoErr")
+	        			})
+						.then(function() {
+								
+							console.log("inform updated");
+							
+							esto.setState({success: true})
+							esto.setState({spinner: false})
+							esto.setState({disabled: false})
+							esto.setState({err: false})
+							esto.setState({err2: false})
+							esto.setState({err3: false})
+							esto.setState({err4: false})
+							esto.setState({err5: false})
+						
+							//Ir a abajo (no siempre funciona)
+							window.scrollBy(0, window.innerHeight);
+						
+							// ↓ Este segundo dispatch lo único que hace es evitar un bug que surgía al enviar un primer informe, y si queríamos volver a usar el select este quedaba en blanco pero seguía teniendo value.
+							esto.props.MONTH("noReset")
+						
+							//Dejamos de marcar en rojo cualquier campo que pudo haber dejado vacío el usuario
+							esto.props.ERR("NoErr")
 
-	        		})
-       				.catch(function(error) {
-            
-            			console.error("Error adding document: ", error);
-        	
-        			});
+						})
+						.catch(function(error) {
+				
+							console.error("Error adding document: ", error);
+				
+						});
 
-         		} else {
+					} else {
 
-		     		console.log("No existe la ID del informe registrado previamente ")
-			      	
-        		}
+						console.log("No existe la ID del informe registrado previamente ")
+						
+					}
       
-          	})
-          	.catch(function(error) {
-        
-            	console.log("Error getting documents: ", error);
-            
-            	if (error == "TypeError: Cannot read property 'id' of undefined") {
-            	
-            		console.log("No existe la ID del informe registrado previamente ")
-			      	
-			      	esto.setState({err3: true})
-			      	esto.setState({err5: false})
-			      	esto.setState({err4: false})
-			  	  	esto.setState({success: false})
-	           	  	esto.setState({err: false})
-				  	esto.setState({err2: false})
-				  	esto.setState({spinner: false})
-				  	esto.setState({disabled: false})
-				}
-        
-          	});
+          		})
+				.catch(function(error) {
+			
+					console.log("Error getting documents: ", error);
+				
+					if (error == "TypeError: Cannot read property 'id' of undefined") {
+					
+						console.log("No existe la ID del informe registrado previamente ")
+						
+						esto.setState({err3: true})
+						esto.setState({err5: false})
+						esto.setState({err4: false})
+						esto.setState({success: false})
+						esto.setState({err: false})
+						esto.setState({err2: false})
+						esto.setState({spinner: false})
+						esto.setState({disabled: false})
+					}
+			
+				});
 
           	}	
    		}
@@ -382,7 +383,8 @@ class Edit extends React.Component{
 	           	</div>                  
 	          
 	           <div className="card-container">
-	               <Card className="card">
+	               
+				   <Card className="card">
 
 						<CardMedia/>
 
@@ -532,6 +534,7 @@ class Edit extends React.Component{
 									</div>
 							
 								</div>
+							
 							</Typography>	
 
 						</CardContent>

@@ -105,8 +105,7 @@ export default function DeleteInform(props) {
 
   return (
     <div className="deleteButton">
-    
-      
+          
       { 
         idNoNull.value &&   <TrashButton variant="contained" color="primary" onClick={handleOpen}>
           <i class="fas fa-trash-alt " ></i> 

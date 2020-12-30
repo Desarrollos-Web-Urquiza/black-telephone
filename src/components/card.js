@@ -41,7 +41,7 @@ export default function SimpleCard(props) {
   console.log(props.properties.history.location.pathname)
 
   //Es importante que la ruta sea "/estadisticas" porque si no se complica mostrarlo completo con el botón. 
-  if(props.properties.history.location.pathname != "/estadisticas"){
+  if(props.properties.history.location.pathname != "/estadisticas" && props.properties.history.location.pathname != "/edit"  ){
   
     props.properties.history.push("/estadisticas")
   
@@ -53,7 +53,7 @@ export default function SimpleCard(props) {
     
       <CardContent> 
         
-        <MiComponente2 test={props} month= {props.month}/>
+        <MiComponente2 test={props} month={props.month}/>
       
       </CardContent>
       
@@ -61,16 +61,6 @@ export default function SimpleCard(props) {
       
         <Button  onClick={() => props.properties.history.push(props.properties.history.location.pathname + "-ver/" + props.month ) } size="small">ver completo</Button>
         
-        {/* <Link to={props.properties.history.location.pathname + "-ver/" + props.month}>
-        <Button
-          // icon={<ArrowLeftOutlined/>}
-          size="large"
-          shape="circle"
-        >
-          Ver completo
-        </Button>
-      </Link> */}
-
       </CardActions>
     
     </Card>

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 
+import { motion } from "framer-motion";
+
 import Card from '@material-ui/core/Card';
 import { green, purple, grey, amber } from '@material-ui/core/colors';
 import { createMuiTheme, withStyles, makeStyles, ThemeProvider } from '@material-ui/core/styles';
@@ -12,7 +14,6 @@ const CardSelect = withStyles((theme) => ({
     backgroundColor: grey[100],
     width: 500,
 
-
     '&:hover': {
       backgroundColor: grey[100],
     },
@@ -24,7 +25,6 @@ const CardSelectTerritory = withStyles((theme) => ({
 
     backgroundColor: '#d8ae74',
     width: 675,
-
 
     '&:hover': {
       backgroundColor: '#d8ae74',
@@ -44,47 +44,67 @@ const Help = props => {
 
   }
 
+  const transition = {
+    duration: 0.3,
+    ease: [0.43, 0.13, 0.23, 0.76]
+  };
+
+  const backVariants = {
+    initial: {x: 0, opacity: 0, transition},
+    exit: { x: 0, opacity: 0, transition },
+    enter: { x: 0, opacity: 1, transition }
+  };
+
   return (
 
-    <div align= "center" style={{marginTop: 100}}>
+    <motion.div
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
+      <motion.div variants={backVariants}>
 
-      <TopBar
-        
-        page={"home"} 
+        <div align= "center" style={{marginTop: 100}}>
 
-        onOpenDrawer={ () => handleDrawerOpenFunction(this)}
-      
-        history={props.history}
-      
-      />
+          <TopBar
+            
+            page={"home"} 
 
-      <h1>CÓMO USAR EL SISTEMA DE LLAMADAS DE BLACK TELEPHONE</h1>
-      
-      <h2 style={{marginTop: 50}}>Qué es un territorio</h2>
+            onOpenDrawer={ () => handleDrawerOpenFunction(this)}
+          
+            history={props.history}
+          
+          />
 
-      <p style={{marginLeft: 20}}>
-        En Black Telephone le llamamos "territorio" a un conjunto de números telefónicos de personas que son potenciales clientes a los cuales nuestros empleados se encargarán de llamar.
-      
-        <br />
-        <br />
-        
-        Estos territorios se ordenan numéricamente y se almacenan en archivos de hojas de cálculo en los que figurarán cuatro columnas: "Nombre", "Direccion", "Telefono", "Territorio". 
+          <h1>CÓMO USAR EL SISTEMA DE LLAMADAS DE BLACK TELEPHONE</h1>
+          
+          <h2 style={{marginTop: 50}}>Qué es un territorio</h2>
 
-      </p>
+          <p style={{marginLeft: 20}}>
+            En Black Telephone le llamamos "territorio" a un conjunto de números telefónicos de personas que son potenciales clientes a los cuales nuestros empleados se encargarán de llamar.
+          
+            <br />
+            <br />
+            
+            Estos territorios se ordenan numéricamente y se almacenan en archivos de hojas de cálculo en los que figurarán cuatro columnas: "Nombre", "Direccion", "Telefono", "Territorio". 
 
-      <h2>Cómo importar un territorio al sistema</h2>
-      
-      <p style={{marginLeft: 20}}>
-        Descargue un territorio  <a href="https://drive.google.com/uc?id=1Gcp5_1JF-JRC0SHY3X7SMI83KJGdiZ5S&export=download&authuser=0" >aquí</a>.
-        
-        <br />
-        <br />
+          </p>
 
-        Luego importe la hoja de cálculo en la página anterior y verá el resultado.
+          <h2>Cómo importar un territorio al sistema</h2>
+          
+          <p style={{marginLeft: 20}}>
+            Descargue un territorio  <a href="https://drive.google.com/uc?id=1Gcp5_1JF-JRC0SHY3X7SMI83KJGdiZ5S&export=download&authuser=0" >aquí</a>.
+            
+            <br />
+            <br />
 
-      </p>
+            Luego importe la hoja de cálculo en la página anterior y verá el resultado.
 
-    </div>
+          </p>
+
+        </div>
+      </motion.div>
+		</motion.div>
   )
 
 }

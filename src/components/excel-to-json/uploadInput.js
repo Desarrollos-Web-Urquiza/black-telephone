@@ -2,6 +2,8 @@ import React from 'react';
 
 import {Helmet} from "react-helmet";
 
+import { motion } from "framer-motion";
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -59,6 +61,7 @@ const CardSelectTerritory = withStyles((theme) => ({
 
 const UploadInput = props => {
 
+  //Script que evita cerrar la pestaña
 	window.onbeforeunload = function(e) {
   
     return 'Texto de aviso';
@@ -181,6 +184,17 @@ const UploadInput = props => {
 
   }
 
+  const transition = {
+    duration: 0.3,
+    ease: [0.43, 0.13, 0.23, 0.76]
+  };
+
+  const backVariants = {
+    initial: {x: 0, opacity: 0, transition},
+    exit: { x: 0, opacity: 0, transition },
+    enter: { x: 0, opacity: 1, transition }
+  };
+
   console.log("uploadInput actualizado: 20")
   console.log(window.location.origin)
   console.log(noHouse.value)
@@ -191,190 +205,200 @@ const UploadInput = props => {
   console.log(props.history)
 
   return(
-  
-    <div>
-
-      <Helmet>
-                              
-        <title>Informes - Territorios de llamadas</title>
-              
-      </Helmet>
-
-      <TopBar
-        
-        page={"home"} 
-        onOpenDrawer={ () => handleDrawerOpenFunction(this)}
-        history={props.history}
-      
-      />
     
-      <Drawer
+    //Animación de transición
+    <motion.div
+      initial="initial"
+      animate="enter"
+      exit="exit"
+    >
+      <motion.div variants={backVariants}>
 
-        onClose={() => handleDrawerClose(this)}
-        open={handleDrawerOpen}
-        history={props.history}
-      
-      />
+        <div>
 
-      { !show.value && 
+          <Helmet>
+                                  
+            <title>Informes - Territorios de llamadas</title>
+                  
+          </Helmet>
 
-        <div  align="center" style={{marginTop: 150}}>
-          <CardSelect>
+          <TopBar
             
-            <h1>Ingrese territorio</h1>
-            
-            <img src={ imageExcelInform } />
-              
-            <br />
-            <br />
+            page={"home"} 
+            onOpenDrawer={ () => handleDrawerOpenFunction(this)}
+            history={props.history}
           
-            <input type="file" name="avatar"  onChange={handleOnChange.bind(this)}  accept=".xls,.xlsx,.ods,.ots,.uos,.xlt,.xlsm" />
-
-            <br />
-            <br />
-
-            { spinner && <CircularProgress />}                       
-            { spinner &&   <Typography >Cargando territorio...</Typography>}
-
-            <br />
-            
-            <a 
-              
-              onClick={() => props.history.push('/uploadexcel-ayuda' ) }
-              style={{marginLeft: 400,   cursor: "pointer", color: "#0070f3",  }}
-            
-            >
-              Ayuda
-          
-            </a>
-            
-            <br />
-            <br />
-          
-          </CardSelect>
-        </div>
-
-      }
-      
-      {show.value &&
+          />
         
-        <TableContainer component={Paper} className="containerOfTerritory">
-       
-          <div align="center">
+          <Drawer
 
-            <div  align="center" style={{marginTop: 100}}>
-              
-              { showTerritory.value &&
+            onClose={() => handleDrawerClose(this)}
+            open={handleDrawerOpen}
+            history={props.history}
+          
+          />
+
+          { !show.value && 
+
+            <div  align="center" style={{marginTop: 150}}>
+              <CardSelect>
                 
-                <CardSelectTerritory>
+                <h1>Ingrese territorio</h1>
+                
+                <img src={ imageExcelInform } />
                   
-                  <img src={ clipUsado } style={{marginLeft: -550, }}/>
-                  
-                  <h1 style={{marginTop: -50, marginLeft: 10, }}>{"Territorio " + rows.value[0][0].Territorio}</h1>
-                  
-                  <a href={urlImage} target="_blank" > <img src={urlImage} width="400"  /></a>
-                  
-                  <br />
-                  <br />
-                  <br />
-                  <br />
+                <br />
+                <br />
               
-                </CardSelectTerritory>
-              }
+                <input type="file" name="avatar"  onChange={handleOnChange.bind(this)}  accept=".xls,.xlsx,.ods,.ots,.uos,.xlt,.xlsm" />
+
+                <br />
+                <br />
+
+                { spinner && <CircularProgress />}                       
+                { spinner &&   <Typography >Cargando territorio...</Typography>}
+
+                <br />
+                
+                <a 
+                  
+                  onClick={() => props.history.push('/uploadexcel-ayuda' ) }
+                  style={{marginLeft: 400,   cursor: "pointer", color: "#0070f3",  }}
+                
+                >
+                  Ayuda
               
-              { !showTerritory.value && <h1 style={{marginTop: 50, marginLeft: 10, }}>{"Territorio " + rows.value[0][0].Territorio}</h1> }
-            
+                </a>
+                
+                <br />
+                <br />
+              
+              </CardSelect>
             </div>
-            
-            <br />
-            <br />
-            <br />
-            
-          </div>
-        
-          <Table  stickyHeader={true} minWidth= "650" aria-label="simple table" id="tblD" >
-            
-            <TableHead>
-            
-              <TableRow>
 
-                <TableCell><b>Nombre</b></TableCell>
-                <TableCell align="right"><b>Direccion</b></TableCell>
-                <TableCell align="right"><b>Telefono</b></TableCell>
-                <TableCell align="right"><b>Google Maps</b></TableCell>
-                <TableCell align="right"><b>Hecho</b></TableCell>
-                <TableCell align="right"><b>No en casa</b></TableCell>
-                <TableCell align="right"><b>Mostrar número</b></TableCell>
-
-              </TableRow>
-            
-            </TableHead>
-            
-            <TableBody>
-              
-              {rows.value[0].map(row => (            
-
-                row.Nombre ? undefined : row.Nombre = "" ,
-                
-                row.Direccion ? undefined : row.Direccion = "" ,
-                
-                row.Territorio ? undefined : row.Territorio = "desconocido" ,
-
-                <TableRow key={row.Nombre}>
-                  
-                  <TableCell component="th" scope="row">
-                  
-                    <Typography gutterBottom variant="h6">{row.Nombre}</Typography>
-                  
-                  </TableCell>
-
-                  <TableCell align="right"><Typography gutterBottom variant="h6">{row.Direccion} </Typography></TableCell>
-                  <TableCell align="right"><Typography gutterBottom variant="h6">{row.Telefono} </Typography></TableCell>
-                  <TableCell align="right"> <a href={"https://www.google.com/maps/place/" + row.Direccion + ",+Rosario,+Santa+Fe,+Argentina/"} target="_blank" ><img src={ GoogleMaps } /></a></TableCell>
-                  <TableCell align="right"><input type="checkbox" /></TableCell>
-                  <TableCell align="right"><Button  color={"default"} size="large" onClick={() => noCasa({Nombre: row.Nombre, Direccion: row.Direccion, Telefono: row.Telefono, Territorio: row.Territorio})}><i class="fas fa-home  fa-lg"></i> </Button></TableCell>
-                  <TableCell align="right">  <Button  color={"primary"} target="_blank"  href={window.location.origin + "/mostrarnumero/" + "Territorio=" + row.Territorio + "&" + "Nombre=" + row.Nombre + "&" + "Direccion=" + row.Direccion + "&" + "Telefono=" + row.Telefono + "&" + "showTerritory=" + showTerritory.value  } size="large"><i class="fa fa-external-link fa-lg" ></i> </Button> </TableCell>
-                  
-                </TableRow>
-              
-              ))}
-            
-            </TableBody>
+          }
           
-          </Table>
-      
-        </TableContainer>
+          {show.value &&
+            
+            <TableContainer component={Paper} className="containerOfTerritory">
+          
+              <div align="center">
 
-      }
+                <div  align="center" style={{marginTop: 100}}>
+                  
+                  { showTerritory.value &&
+                    
+                    <CardSelectTerritory>
+                      
+                      <img src={ clipUsado } style={{marginLeft: -550, }}/>
+                      
+                      <h1 style={{marginTop: -50, marginLeft: 10, }}>{"Territorio " + rows.value[0][0].Territorio}</h1>
+                      
+                      <a href={urlImage} target="_blank" > <img src={urlImage} width="400"  /></a>
+                      
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                  
+                    </CardSelectTerritory>
+                  }
+                  
+                  { !showTerritory.value && <h1 style={{marginTop: 50, marginLeft: 10, }}>{"Territorio " + rows.value[0][0].Territorio}</h1> }
+                
+                </div>
+                
+                <br />
+                <br />
+                <br />
+                
+              </div>
+            
+              <Table  stickyHeader={true} minWidth= "650" aria-label="simple table" id="tblD" >
+                
+                <TableHead>
+                
+                  <TableRow>
 
-      { show.value &&  <br />}
-      { show.value &&  <br />}
-      
-      { show.value && <Shifts /> /*Turnos*/}
-      
-      { show.value && <NoHouse noHouses={noHouse.value} /> /*No en casa*/}
+                    <TableCell><b>Nombre</b></TableCell>
+                    <TableCell align="right"><b>Direccion</b></TableCell>
+                    <TableCell align="right"><b>Telefono</b></TableCell>
+                    <TableCell align="right"><b>Google Maps</b></TableCell>
+                    <TableCell align="right"><b>Hecho</b></TableCell>
+                    <TableCell align="right"><b>No en casa</b></TableCell>
+                    <TableCell align="right"><b>Mostrar número</b></TableCell>
 
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      { !show.value &&  <br />}
-      
-      <Footer properties={props}/>	
-    
-    </div>
+                  </TableRow>
+                
+                </TableHead>
+                
+                <TableBody>
+                  
+                  {rows.value[0].map(row => (            
+
+                    row.Nombre ? undefined : row.Nombre = "" ,
+                    
+                    row.Direccion ? undefined : row.Direccion = "" ,
+                    
+                    row.Territorio ? undefined : row.Territorio = "desconocido" ,
+
+                    <TableRow key={row.Nombre}>
+                      
+                      <TableCell component="th" scope="row">
+                      
+                        <Typography gutterBottom variant="h6">{row.Nombre}</Typography>
+                      
+                      </TableCell>
+
+                      <TableCell align="right"><Typography gutterBottom variant="h6">{row.Direccion} </Typography></TableCell>
+                      <TableCell align="right"><Typography gutterBottom variant="h6">{row.Telefono} </Typography></TableCell>
+                      <TableCell align="right"> <a href={"https://www.google.com/maps/place/" + row.Direccion + ",+Rosario,+Santa+Fe,+Argentina/"} target="_blank" ><img src={ GoogleMaps } /></a></TableCell>
+                      <TableCell align="right"><input type="checkbox" /></TableCell>
+                      <TableCell align="right"><Button  color={"default"} size="large" onClick={() => noCasa({Nombre: row.Nombre, Direccion: row.Direccion, Telefono: row.Telefono, Territorio: row.Territorio})}><i class="fas fa-home  fa-lg"></i> </Button></TableCell>
+                      <TableCell align="right">  <Button  color={"primary"} target="_blank"  href={window.location.origin + "/mostrarnumero/" + "Territorio=" + row.Territorio + "&" + "Nombre=" + row.Nombre + "&" + "Direccion=" + row.Direccion + "&" + "Telefono=" + row.Telefono + "&" + "showTerritory=" + showTerritory.value  } size="large"><i class="fa fa-external-link fa-lg" ></i> </Button> </TableCell>
+                      
+                    </TableRow>
+                  
+                  ))}
+                
+                </TableBody>
+              
+              </Table>
+          
+            </TableContainer>
+
+          }
+
+          { show.value &&  <br />}
+          { show.value &&  <br />}
+          
+          { show.value && <Shifts /> /*Turnos*/}
+          
+          { show.value && <NoHouse noHouses={noHouse.value} /> /*No en casa*/}
+
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          { !show.value &&  <br />}
+          
+          <Footer properties={props}/>	
+        
+        </div>
+    </motion.div>
+	</motion.div>
   )
 
 }
