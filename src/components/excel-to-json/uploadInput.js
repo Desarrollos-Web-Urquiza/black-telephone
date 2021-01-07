@@ -82,6 +82,7 @@ const UploadInput = props => {
 
   const [handleDrawerOpen, setHandleDrawerOpen] = React.useState(false);
 
+  
   const noCasa = (param) => {
 
     if (noHouse.value != undefined) {
@@ -96,17 +97,74 @@ const UploadInput = props => {
 
       date = date.split(' ')
 
+      console.log(typeof(date[1]))
+
+      function traductionOfMonth(month){
+
+        switch(month){
+
+          case 'Jan':
+    
+            return date[1] = "Enero"
+          
+          case 'Feb':
+    
+            return date[1] = "Febrero"
+        
+          case 'Mar':
+    
+            return date[1] = "Marzo"
+          
+          case 'Apr':
+    
+            return date[1] = "Abril"
+          
+          case 'May':
+    
+            return date[1] = "Mayo"
+        
+          case 'Jun':
+    
+            return date[1] = "Junio"
+          
+          case 'Aug':
+  
+            return date[1] = "Agosto"
+          
+          case 'Sep':
+
+            return date[1] = "Septiembre"
+          
+          case 'Oct':
+
+            return date[1] = "Octubre"
+
+          case 'Nov':
+
+            return date[1] = "Noviembre"
+          
+          case 'Dec':
+
+            return date[1] = "Diciembre"
+                      
+        }
+
+      }
+
+      date[1] = traductionOfMonth(date[1])
+      
       date = date[2] + '-' + date[1] + '-' + date[3] 
 
       param.Fecha = date
 
+      console.log(date)
+
       noHouse.value.push(param)
-      
       setNoHouse({value: noHouse.value })
       
       console.log(noHouse.value)
-      console.log(noHouse)          
-
+      console.log(noHouse)
+      
       // Ir a abajo
       let bajar = window.innerHeight + 100000
       window.scrollBy(0, bajar);
@@ -122,9 +180,8 @@ const UploadInput = props => {
       console.log("No entró a la actulización")
 
     }
-    
-  }  
 
+}
   const handleOnChange = event => {
 
     setSpinner(true)

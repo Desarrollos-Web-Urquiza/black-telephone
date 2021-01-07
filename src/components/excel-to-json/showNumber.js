@@ -59,7 +59,7 @@ const ShowNumber = props => {
   //Recibimos todos los argumentos del número que clickeamos desde la URL
 
   console.log("ShowNumber actualizado: 20")
-
+  
   let semiParams = window.location.pathname.split('/')//Separamos el mes del resto de la URL
   
   semiParams =  semiParams[2]
