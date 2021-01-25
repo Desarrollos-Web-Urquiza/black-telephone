@@ -78,6 +78,19 @@ const Help = props => {
 
           <h1>CÓMO USAR EL SISTEMA DE LLAMADAS DE BLACK TELEPHONE</h1>
           
+          <h2 style={{marginTop: 50}}>Propósito del sistema</h2>
+
+          <p style={{marginLeft: 20}}>
+            
+            Debido a la pandemia del Covid-19 hemos creado este sistema para que cada empleado de Black Telephone pueda trabajar en la modalidad "home office". 
+            
+            <br />
+            <br />
+
+            De esta forma cada empleado puede colaborar con sus compañeros llamando de forma cooperativa desde su casa y realizando los registros pertinentes.
+                      
+          </p>
+
           <h2 style={{marginTop: 50}}>Qué es un territorio</h2>
 
           <p style={{marginLeft: 20}}>
@@ -90,7 +103,7 @@ const Help = props => {
 
           </p>
 
-          <h2>Cómo importar un territorio al sistema</h2>
+          <h2 tyle={{marginLeft: 50}}>Cómo importar un territorio al sistema</h2>
           
           <p style={{marginLeft: 20}}>
             Descargue un territorio  <a href="https://drive.google.com/uc?id=1Gcp5_1JF-JRC0SHY3X7SMI83KJGdiZ5S&export=download&authuser=0" >aquí</a>.

@@ -36,9 +36,7 @@ import XLSX  from 'xlsx';
 const CardSelect = withStyles((theme) => ({
   root: {
 
-    backgroundColor: grey[100],
-
-    width: 500,
+    backgroundColor: grey[100],   
 
     '&:hover': {
       backgroundColor: grey[100],
@@ -298,7 +296,7 @@ const UploadInput = props => {
           { !show.value && 
 
             <div  align="center" style={{marginTop: 150}}>
-              <CardSelect>
+              <CardSelect style={{width: 400}}>
                 
                 <h1>Ingrese territorio</h1>
                 
@@ -320,7 +318,7 @@ const UploadInput = props => {
                 <a 
                   
                   onClick={() => props.history.push('/uploadexcel-ayuda' ) }
-                  style={{marginLeft: 400,   cursor: "pointer", color: "#0070f3",  }}
+                  style={{marginLeft: 300,   cursor: "pointer", color: "#0070f3",  }}
                 
                 >
                   Ayuda
