@@ -35,7 +35,7 @@ import XLSX  from 'xlsx';
 
 const CardSelect = withStyles((theme) => ({
   root: {
-
+    width: 400,
     backgroundColor: grey[100],   
 
     '&:hover': {
@@ -296,41 +296,43 @@ const UploadInput = props => {
           { !show.value && 
 
             <div  align="center" style={{marginTop: 150}}>
-              <CardSelect style={{width: 400, }}>
-                
-                <h1>Ingrese territorio</h1>
-                
-                <img src={ imageExcelInform } />
+              <div className="card-container">
+                <CardSelect >
                   
-                <br />
-                <br />
-              
-                <label className="labelInputButton">
-                <i class="fa fa-upload" /> Subir territorio  
-                  <input type="file" name="avatar"  onChange={handleOnChange.bind(this)}  accept=".xls,.xlsx,.ods,.ots,.uos,.xlt,.xlsm" className="inputButton"/>
-                </label>
-                <br />
-                <br />
-
-                { spinner && <CircularProgress />}                       
-                { spinner &&   <Typography >Cargando territorio...</Typography>}
-
-                <br />
-                
-                <a 
+                  <h1>Ingrese territorio</h1>
                   
-                  onClick={() => props.history.push('/uploadexcel-ayuda' ) }
-                  style={{marginLeft: 300,   cursor: "pointer", color: "#0070f3",  }}
+                  <img src={ imageExcelInform } />
+                    
+                  <br />
+                  <br />
                 
-                >
-                  Ayuda
-              
-                </a>
+                  <label className="labelInputButton">
+                  <i class="fa fa-upload" /> Subir territorio  
+                    <input type="file" name="avatar"  onChange={handleOnChange.bind(this)}  accept=".xls,.xlsx,.ods,.ots,.uos,.xlt,.xlsm" className="inputButton"/>
+                  </label>
+                  <br />
+                  <br />
+
+                  { spinner && <CircularProgress />}                       
+                  { spinner &&   <Typography >Cargando territorio...</Typography>}
+
+                  <br />
+                  
+                  <a 
+                    
+                    onClick={() => props.history.push('/uploadexcel-ayuda' ) }
+                    style={{marginLeft: "75%",   cursor: "pointer", color: "#0070f3",  }}
+                  
+                  >
+                    Ayuda
                 
-                <br />
-                <br />
-              
-              </CardSelect>
+                  </a>
+                  
+                  <br />
+                  <br />
+                
+                </CardSelect>
+              </div>
             </div>
 
           }
