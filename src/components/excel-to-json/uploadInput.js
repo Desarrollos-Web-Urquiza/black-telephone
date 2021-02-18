@@ -296,7 +296,7 @@ const UploadInput = props => {
           { !show.value && 
 
             <div  align="center" style={{marginTop: 150}}>
-              <CardSelect style={{width: 400}}>
+              <CardSelect style={{width: 400, }}>
                 
                 <h1>Ingrese territorio</h1>
                 
@@ -305,8 +305,10 @@ const UploadInput = props => {
                 <br />
                 <br />
               
-                <input type="file" name="avatar"  onChange={handleOnChange.bind(this)}  accept=".xls,.xlsx,.ods,.ots,.uos,.xlt,.xlsm" />
-
+                <label className="labelInputButton">
+                <i class="fa fa-upload" /> Subir territorio  
+                  <input type="file" name="avatar"  onChange={handleOnChange.bind(this)}  accept=".xls,.xlsx,.ods,.ots,.uos,.xlt,.xlsm" className="inputButton"/>
+                </label>
                 <br />
                 <br />
 
@@ -431,23 +433,11 @@ const UploadInput = props => {
           
           { show.value && <NoHouse noHouses={noHouse.value} /> /*No en casa*/}
 
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
-          { !show.value &&  <br />}
+          { 
+            !show.value && <div> 
+              <br /> <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+            </div>
+          }
           
           <Footer properties={props}/>	
         
