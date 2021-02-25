@@ -281,7 +281,7 @@ class Informar extends React.Component{
 							esto.setState({err5: false})
 						
 							//Ir a abajo
-							window.scrollBy(0, window.innerHeight);
+							// window.scrollBy(0, window.innerHeight);
 
 							// ↓ Este dispacth hace que se reseteen todos los campos
 							esto.props.MONTH("reset")
